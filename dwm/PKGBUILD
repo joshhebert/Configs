@@ -17,9 +17,6 @@ md5sums=()
 
 build() {
 
-    # Get the config file
-    cp $srcdir/../config.h config.h
-
     cd $srcdir/dwm-6.0
 
 
