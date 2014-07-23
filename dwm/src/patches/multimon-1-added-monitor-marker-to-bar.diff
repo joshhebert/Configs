@@ -1,0 +1,163 @@
+From 143e7f2f3caa047469c7219cd6b0cb704466683f Mon Sep 17 00:00:00 2001
+From: "Gary B. Genett" <me@garybgenett.net>
+Date: Mon, 24 Mar 2014 13:47:59 -0700
+Subject: added monitor marker to bar
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="------------1.8.3.2"
+
+This is a multi-part message in MIME format.
+--------------1.8.3.2
+Content-Type: text/plain; charset=UTF-8; format=fixed
+Content-Transfer-Encoding: 8bit
+
+---
+ config.def.h |  2 ++
+ dwm.c        | 13 +++++++++++--
+ 2 files changed, 13 insertions(+), 2 deletions(-)
+
+
+--------------1.8.3.2
+Content-Type: text/x-patch; name="0001-added-monitor-marker-to-bar.patch"
+Content-Transfer-Encoding: 8bit
+Content-Disposition: attachment; filename="0001-added-monitor-marker-to-bar.patch"
+
+diff --git a/config.def.h b/config.def.h
+index 875885b864986b6b2c190f9e05d979887e563f93..af6bcfae52a8d1783158ae4f38f35b88025c04e1 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -90,20 +90,22 @@ static Key keys[] = {
+ 	TAGKEYS(                        XK_9,                      8)
+ 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+ };
+ 
+ /* button definitions */
+ /* click can be ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
+ static Button buttons[] = {
+ 	/* click                event mask      button          function        argument */
+ 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
+ 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
++	{ ClkMonNum,            0,              Button1,        focusmon,       {.i = +1} },
++	{ ClkMonNum,            0,              Button3,        focusmon,       {.i = -1} },
+ 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+ 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+ 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
+ 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
+ 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+ 	{ ClkTagBar,            0,              Button1,        view,           {0} },
+ 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
+ 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
+ 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+ };
+diff --git a/dwm.c b/dwm.c
+index 1bbb4b35be25b0a10b8ffd093c55906b8aea96df..209dedc1417a29fb44c3ba5b6fa62f1b75b6a09f 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -56,21 +56,21 @@
+ #define TAGMASK                 ((1 << LENGTH(tags)) - 1)
+ #define TEXTW(X)                (drw_font_getexts_width(drw->font, X, strlen(X)) + drw->font->h)
+ 
+ /* enums */
+ enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
+ enum { SchemeNorm, SchemeSel, SchemeLast }; /* color schemes */
+ enum { NetSupported, NetWMName, NetWMState,
+        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
+        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
+ enum { WMProtocols, WMDelete, WMState, WMTakeFocus, WMLast }; /* default atoms */
+-enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
++enum { ClkTagBar, ClkLtSymbol, ClkMonNum, ClkStatusText, ClkWinTitle,
+        ClkClientWin, ClkRootWin, ClkLast }; /* clicks */
+ 
+ typedef union {
+ 	int i;
+ 	unsigned int ui;
+ 	float f;
+ 	const void *v;
+ } Arg;
+ 
+ typedef struct {
+@@ -231,21 +231,21 @@ static Monitor *wintomon(Window w);
+ static int xerror(Display *dpy, XErrorEvent *ee);
+ static int xerrordummy(Display *dpy, XErrorEvent *ee);
+ static int xerrorstart(Display *dpy, XErrorEvent *ee);
+ static void zoom(const Arg *arg);
+ 
+ /* variables */
+ static const char broken[] = "broken";
+ static char stext[256];
+ static int screen;
+ static int sw, sh;           /* X display screen geometry width, height */
+-static int bh, blw = 0;      /* bar geometry */
++static int bh, blw, bmw = 0; /* bar geometry */
+ static int (*xerrorxlib)(Display *, XErrorEvent *);
+ static unsigned int numlockmask = 0;
+ static void (*handler[LASTEvent]) (XEvent *) = {
+ 	[ButtonPress] = buttonpress,
+ 	[ClientMessage] = clientmessage,
+ 	[ConfigureRequest] = configurerequest,
+ 	[ConfigureNotify] = configurenotify,
+ 	[DestroyNotify] = destroynotify,
+ 	[EnterNotify] = enternotify,
+ 	[Expose] = expose,
+@@ -425,20 +425,22 @@ buttonpress(XEvent *e) {
+ 		i = x = 0;
+ 		do
+ 			x += TEXTW(tags[i]);
+ 		while(ev->x >= x && ++i < LENGTH(tags));
+ 		if(i < LENGTH(tags)) {
+ 			click = ClkTagBar;
+ 			arg.ui = 1 << i;
+ 		}
+ 		else if(ev->x < x + blw)
+ 			click = ClkLtSymbol;
++		else if(ev->x < x + blw + bmw)
++			click = ClkMonNum;
+ 		else if(ev->x > selmon->ww - TEXTW(stext))
+ 			click = ClkStatusText;
+ 		else
+ 			click = ClkWinTitle;
+ 	}
+ 	else if((c = wintoclient(ev->window))) {
+ 		focus(c);
+ 		click = ClkClientWin;
+ 	}
+ 	for(i = 0; i < LENGTH(buttons); i++)
+@@ -707,28 +709,35 @@ drawbar(Monitor *m) {
+ 		drw_setscheme(drw, m->tagset[m->seltags] & 1 << i ? &scheme[SchemeSel] : &scheme[SchemeNorm]);
+ 		drw_text(drw, x, 0, w, bh, tags[i], urg & 1 << i);
+ 		drw_rect(drw, x, 0, w, bh, m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
+ 		           occ & 1 << i, urg & 1 << i);
+ 		x += w;
+ 	}
+ 	w = blw = TEXTW(m->ltsymbol);
+ 	drw_setscheme(drw, &scheme[SchemeNorm]);
+ 	drw_text(drw, x, 0, w, bh, m->ltsymbol, 0);
+ 	x += w;
++	char custom[4] = {0}; // needs to be +1 of actual size, for some reason
++	snprintf(custom, sizeof(custom), "<%d>", m->num);
++	w = bmw = TEXTW(custom);
++	drw_setscheme(drw, m == selmon ? &scheme[SchemeSel] : &scheme[SchemeNorm]);
++	drw_text(drw, x, 0, w, bh, custom, 0);
++	x += w;
+ 	xx = x;
+ 	if(m == selmon) { /* status is only drawn on selected monitor */
+ 		w = TEXTW(stext);
+ 		x = m->ww - w;
+ 		if(x < xx) {
+ 			x = xx;
+ 			w = m->ww - xx;
+ 		}
++		drw_setscheme(drw, &scheme[SchemeNorm]);
+ 		drw_text(drw, x, 0, w, bh, stext, 0);
+ 	}
+ 	else
+ 		x = m->ww;
+ 	if((w = x - xx) > bh) {
+ 		x = xx;
+ 		if(m->sel) {
+ 			drw_setscheme(drw, m == selmon ? &scheme[SchemeSel] : &scheme[SchemeNorm]);
+ 			drw_text(drw, x, 0, w, bh, m->sel->name, 0);
+ 			drw_rect(drw, x, 0, w, bh, m->sel->isfixed, m->sel->isfloating, 0);
+
+--------------1.8.3.2--
+
+

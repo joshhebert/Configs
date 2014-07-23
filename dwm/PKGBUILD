@@ -1,35 +1,27 @@
-# $Id: PKGBUILD 60970 2011-12-19 21:33:58Z spupykin $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Contributor: Dag Odenhall <dag.odenhall@gmail.com>
-# Contributor: Grigorios Bouzakis <grbzks@gmail.com>
+# Maintainer: Josh Hebert <jhebes7@gmail.com>
 
 pkgname=dwm
 pkgver=6.0
-pkgrel=1
-pkgdesc="A dynamic window manager for X"
-url="http://dwm.suckless.org"
-arch=('i686' 'x86_64')
-license=('MIT')
+pkgrel=2
+pkgdesc="Josh's DWM"
+url='http://dwm.suckless.org'
+arch=(i686 x86_64)
+license=(MIT)
 options=(zipman)
-depends=('libx11' 'libxinerama')
+depends=(libx11 libxinerama libxft)
+conflicts=(dwm)
+provides=(dwm)
 install=dwm.install
-source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
-	config.h
-	dwm.desktop)
-md5sums=('8bb00d4142259beb11e13473b81c0857'
-         '2453e037f46449774ec8afab49b4f1a2'
-         '939f403a71b6e85261d09fc3412269ee')
+source=()
+md5sums=()
 
 build() {
 
-    
-    #Copy patches over
-    cp ../patches/dwm-6.0-xft.diff $srcdir/$pkgname-$pkgver
-    patch -p1 < dwm-6.0-xft.diff
-  
+    # Get the config file
+    cp $srcdir/../config.h config.h
 
-    cd $srcdir/$pkgname-$pkgver
-    cp $srcdir/config.h config.h
+    cd $srcdir/dwm-6.0
+
 
     sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
     sed -i 's/^CFLAGS = -g/#CFLAGS += -g/g' config.mk
@@ -40,9 +32,8 @@ build() {
 }
 
 package() {
-    cd $srcdir/$pkgname-$pkgver
+    cd $srcdir/dwm-$pkgver
     make PREFIX=/usr DESTDIR=$pkgdir install
     install -m644 -D LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
     install -m644 -D README $pkgdir/usr/share/doc/$pkgname/README
-    install -m644 -D $srcdir/dwm.desktop $pkgdir/usr/share/xsessions/dwm.desktop
 }

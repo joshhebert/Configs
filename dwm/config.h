@@ -1,7 +1,14 @@
 /* See LICENSE file for copyright and license details. */
 
+/****************************************************************************\
+ * This is based off a now reverted commit in 6.1.
+ *     - http://hg.suckless.org/dwm/rev/0284f00e70d2
+ *
+ * I went ahead and enabled aliasing and hinting (unlike in the commit).
+\****************************************************************************/
+
 /* appearance */
-static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
+static const char font[]            = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
@@ -29,9 +36,9 @@ static const Bool resizehints = True; /* True means respect size hints in tiled 
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[|]",      tile },    /* first entry is default */
-	{ "< >",      NULL },    /* no layout function means floating behavior */
-	{ "[O]",      monocle },
+	{ "[]=",      tile },    /* first entry is default */
+	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "[M]",      monocle },
 };
 
 /* key definitions */
