@@ -1,3 +1,7 @@
 # We don't want compiled packages
 *,tar,gz
 *.tar.xz
+
+# Or binaries
+*.o
+dwm
