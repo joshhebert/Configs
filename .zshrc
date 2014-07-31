@@ -40,7 +40,7 @@ zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
 #zstyle ':completion:*' completer _oldlist _expand _force_rehash _complete
-zstyle ':completion:*' completer _expand _force_rehash _complete _approximate _ignored
+zstyle ':completion:*' completer _expand _complete _approximate _ignored
 
 # generate descriptions with magic.
 zstyle ':completion:*' auto-description 'specify: %d'
@@ -75,34 +75,32 @@ HISTSIZE=10000
 setopt APPEND_HISTORY
 
 # Write after each command
-# # setopt INC_APPEND_HISTORY
-#
-# # Killer: share history between multiple shells
-# setopt SHARE_HISTORY
-#
-# # If I type cd and then cd again, only save the last one
-# setopt HIST_IGNORE_DUPS
-#
-# # Even if there are commands inbetween commands that are the same, still only save the last one
-# setopt HIST_IGNORE_ALL_DUPS
-#
-# # Pretty    Obvious.  Right?
-# setopt HIST_REDUCE_BLANKS
-#
-# # If a line starts with a space, don't save it.
-# setopt HIST_IGNORE_SPACE
-# setopt HIST_NO_STORE
-#
-# # When using a hist thing, make a newline show the change before executing it.
-# setopt HIST_VERIFY
-#
-# # Save the time and how long a command ran
-# setopt EXTENDED_HISTORY
-#
-# setopt HIST_SAVE_NO_DUPS
-# setopt HIST_EXPIRE_DUPS_FIRST
-# setopt HIST_FIND_NO_DUPS
-#
+setopt INC_APPEND_HISTORY
+
+# Killer: share history between multiple shells
+setopt SHARE_HISTORY
+# If I type cd and then cd again, only save the last one
+setopt HIST_IGNORE_DUPS
+
+# Even if there are commands inbetween commands that are the same, still only save the last one
+setopt HIST_IGNORE_ALL_DUPS
+
+# Pretty    Obvious.  Right?
+setopt HIST_REDUCE_BLANKS
+
+# If a line starts with a space, don't save it.
+setopt HIST_IGNORE_SPACE
+setopt HIST_NO_STORE
+
+# When using a hist thing, make a newline show the change before executing it.
+setopt HIST_VERIFY
+
+# Save the time and how long a command ran
+setopt EXTENDED_HISTORY
+
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
 
 export EDITOR=/usr/bin/vim
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
