@@ -9,9 +9,6 @@
 # The most imprtant bit
 	export EDITOR=/usr/bin/vim
 
-# PS1 Setup
-	# Left prompt (WIP)
-	PROMPT='%{$fg_bold[green]%}[${PWD/#$HOME/~}]%{$reset_color%} >> ' 
 
 # Plugin loading (May need to be commented out, depending on system)
 	
@@ -159,17 +156,85 @@
         git diff --stat | tail -n 1 | cut -d',' -f3 | sed 's/[^0-9]*//g'
     }
     
+    # Git state
+    git_state(){
+        local GIT_STATE
+        local GIT_DIR="$(git rev-parse --git-dir 2> /dev/null)"
+        if [ -n $GIT_DIR ] && test -r $GIT_DIR/MERGE_HEAD; then
+            GIT_STATE=$GIT_STATE"merging"
+        fi
+                     
+        if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
+            if [[ ! -z "$GIT_STATE" ]]; then
+                GIT_STATE=$GIT_STATE":"
+            fi
+            GIT_STATE=$GIT_STATE"untracked"
+        fi
+                                 
+        if ! git diff --quiet 2> /dev/null; then
+            if [[ ! -z "$GIT_STATE" ]]; then
+                GIT_STATE=$GIT_STATE":"
+            fi
+            GIT_STATE=$GIT_STATE"modified"
+        fi
+                                             
+        if ! git diff --cached --quiet 2> /dev/null; then
+            if [[ ! -z "$GIT_STATE" ]]; then
+                GIT_STATE=$GIT_STATE":"
+            fi
+            GIT_STATE=$GIT_STATE"staged"
+        fi
+
+        echo -n "$GIT_STATE"
+    }                                     
+
+
+
+
     # Returns the git prompt if we're in a git repo. Otherwise, don't return anything
     git_prompt(){
         git rev-parse --git-dir > /dev/null 2>&1
         if [[ $? == 0 ]]
         then
             # This is a git dir
-            echo -n "(+"
-            echo -n "$(git_additions)"
-            echo -n "/-"
-            echo -n "$(git_deletions)"
-            echo -n ")"
+            echo -n " "
+           
+            # Branch + ahead/behind
+            echo -n "%{$fg_bold[white]%}(%{$fg_bold[grey]%}"
+            echo -n "$(git_branch)"
+            local gca=$(git_commits_ahead)
+            local gcb=$(git_commits_behind)
+            if [[ ! -z "$gca" ]]
+                then
+                    echo -n "%{$fg_bold[green]%} +"
+                    echo -n "$gca"
+            elif [[ ! -z "$gcb" ]]
+                then
+                    echo -n "%{$fg_bold[red]%} -"
+                    echo -n "$gcb"
+            fi
+            echo -n "%{$fg_bold[white]%})"
+
+            
+            # Additions/Deletions
+            echo -n "%{$fg_bold[white]%}(%{$fg_bold[green]%}+"
+            local ga=$(git_additions)
+            if [[ ! -z "$ga" ]]
+                then 
+                    echo -n "$ga"
+                else
+                    echo -n "0"
+            fi
+            echo -n "%{$fg_bold[white]%}/%{$fg_bold[red]%}-"
+            local gd=$(git_deletions)
+            if [[ ! -z "$gd" ]]
+                then
+                    echo -n "$gd"
+                else
+                    echo -n "0"
+            fi
+            echo -n "%{$fg_bold[white]%})"
+
         else
             # this is not a git repository
         fi
@@ -235,3 +300,12 @@
 			return 1
 		fi
 	}
+
+
+# PS1 Setup
+	# Left prompt (WIP)
+    RPROMPT='%{$fg_bold[red]%} %(?,,%?)'
+    PROMPT='%{$fg_bold[white]%}[${PWD/#$HOME/~}]$(git_prompt)%{$reset_color%} >> ' 
+
+
+
