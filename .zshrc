@@ -133,28 +133,48 @@
 	bindkey '\e[B' down-line-or-beginning-search
 
 # Git-specific stuff
-	# Modify the colors and symbols in these variables as desired.
-	GIT_PROMPT_SYMBOL="%{$fg[blue]%}±"
-	GIT_PROMPT_PREFIX="%{$fg[green]%}[%{$reset_color%}"
-	GIT_PROMPT_SUFFIX="%{$fg[green]%}]%{$reset_color%}"
-	GIT_PROMPT_AHEAD="%{$fg[red]%}ANUM%{$reset_color%}"
-	GIT_PROMPT_BEHIND="%{$fg[cyan]%}BNUM%{$reset_color%}"
-	GIT_PROMPT_MERGING="%{$fg_bold[magenta]%}⚡︎%{$reset_color%}"
-	GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%}●%{$reset_color%}"
-	GIT_PROMPT_MODIFIED="%{$fg_bold[yellow]%}●%{$reset_color%}"
-	GIT_PROMPT_STAGED="%{$fg_bold[green]%}●%{$reset_color%}"
 
-	# Show Git branch/tag, or name-rev if on detached head
+    # Get how many commits ahead we are
+    git_commits_ahead(){
+        git status | head -n 2 | tail -n 1 | grep 'ahead' | sed 's/[^0-9]*//g'
+    }
+
+    # Get how many commits behind we are
+    git_commits_behind(){
+        git status | head -n 2 | tail -n 1 | grep 'behind' | sed 's/[^0-9]*//g'
+    }
+
+    # Show Git branch/tag, or name-rev if on detached head
 	git_branch() {
         ((git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null) | cut -d'/' -f3
 	}
 
+    # How many line additions?
     git_additions() {
         git diff --stat | tail -n 1 | cut -d',' -f2 | sed 's/[^0-9]*//g'
     }
 
+    # How many deletions?
     git_deletions() {
         git diff --stat | tail -n 1 | cut -d',' -f3 | sed 's/[^0-9]*//g'
+    }
+    
+    # Returns the git prompt if we're in a git repo. Otherwise, don't return anything
+    git_prompt(){
+        git rev-parse --git-dir > /dev/null 2>&1
+        if [[ $? == 0 ]]
+        then
+            # This is a git dir
+            echo -n "(+"
+            echo -n "$(git_additions)"
+            echo -n "/-"
+            echo -n "$(git_deletions)"
+            echo -n ")"
+        else
+            # this is not a git repository
+        fi
+
+
     }
 
 # Functions
