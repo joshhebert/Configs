@@ -201,30 +201,30 @@
            
             
             # Branch + ahead/behind
-            echo -n "%{$fg_bold[white]%}("
+            echo -n "%{$fg[white]%}("
             local GIT_DIR="$(git rev-parse --git-dir 2> /dev/null)"
             if [ -n $GIT_DIR ] && test -r $GIT_DIR/MERGE_HEAD; then
-                echo -n "%{$fg_bold[magenta]%}<merging> " 
+                echo -n "%{$fg[magenta]%}<merging> " 
             fi
             
-            echo -n "%{$fg_bold[grey]%}"
+            echo -n "%{$fg[white]%}"
             echo -n "$(git_branch)"
             local gca=$(git_commits_ahead)
             local gcb=$(git_commits_behind)
             if [[ ! -z "$gca" ]]
                 then
-                    echo -n "%{$fg_bold[green]%} +"
+                    echo -n "%{$fg[green]%} +"
                     echo -n "$gca"
             elif [[ ! -z "$gcb" ]]
                 then
-                    echo -n "%{$fg_bold[red]%} -"
+                    echo -n "%{$fg[red]%} -"
                     echo -n "$gcb"
             fi
-            echo -n "%{$fg_bold[white]%})"
+            echo -n "%{$fg[white]%})"
 
             
             # Additions/Deletions
-            echo -n "%{$fg_bold[white]%}(%{$fg_bold[green]%}+"
+            echo -n "%{$fg[white]%}(%{$fg_bold[green]%}+"
             local ga=$(git_additions)
             if [[ ! -z "$ga" ]]
                 then 
@@ -232,7 +232,7 @@
                 else
                     echo -n "0"
             fi
-            echo -n "%{$fg_bold[white]%}/%{$fg_bold[red]%}-"
+            echo -n "%{$fg[white]%}/%{$fg[red]%}-"
             local gd=$(git_deletions)
             if [[ ! -z "$gd" ]]
                 then
@@ -240,7 +240,7 @@
                 else
                     echo -n "0"
             fi
-            echo -n "%{$fg_bold[white]%})"
+            echo -n "%{$fg[white]%})"
 
         else
             # this is not a git repository
@@ -311,8 +311,8 @@
 
 # PS1 Setup
 	# Left prompt (WIP)
-    RPROMPT='%{$fg_bold[red]%} %(?,,%?)'
-    PROMPT='%{$fg_bold[white]%}[${PWD/#$HOME/~}]$(git_prompt)%{$reset_color%} >> ' 
+    RPROMPT='%{$fg[red]%} %(?,,%?)'
+    PROMPT='%{$fg[white]%}[${PWD/#$HOME/~}]$(git_prompt)%{$reset_color%} >> ' 
 
 
 
