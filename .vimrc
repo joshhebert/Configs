@@ -26,6 +26,11 @@ let s .= " %P"                                | " percentage
 let s .= "/%LL"                               | " number of lines
 set statusline=%!s
 
+" Xresources colors
+let g:hybrid_use_Xresources = 1
+" This needs to be installed
+colorscheme hybrid
+
 " automatically give executable permissions if file begins with #! and contains
 " is a shell script
 au BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | silent !chmod a+x <afile> | endif
