@@ -11,6 +11,8 @@ filetype indent on
 au FileType c,h           set ai sw=4 ts=4 noexpandtab cindent omnifunc=ccomplete#Complete
 " settings for python
 au FileType python set ai expandtab
+let python_highlight_all = 1
+
 
 let s  = ""
 let s .= "%<"                                 | " truncate at the start
