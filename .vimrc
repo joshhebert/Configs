@@ -36,6 +36,10 @@ colorscheme hybrid
 au BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | silent !chmod a+x <afile> | endif
 
 
+" Needed for some plugins
+set nocp
+
+
 " My terminal is fast
 set ttyfast
 
