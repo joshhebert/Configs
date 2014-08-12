@@ -28,10 +28,8 @@ let s .= " %P"                                | " percentage
 let s .= "/%LL"                               | " number of lines
 set statusline=%!s
 
-" Xresources colors
-let g:hybrid_use_Xresources = 1
-" This needs to be installed
-colorscheme hybrid
+" Load my clor scheme
+colorscheme hashcheck
 
 " automatically give executable permissions if file begins with #! and contains
 " is a shell script
@@ -153,6 +151,7 @@ set background=dark
 
 " 256 colors
 se t_Co=256
+
 
 " Highlight the word under the cursor
 highlight flicker cterm=bold ctermfg=white
