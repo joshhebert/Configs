@@ -4,3 +4,6 @@
 
 # Or binaries
 *.o
+dwm/src/dwm-6.0/dwm
+dwm/pkg/*
+

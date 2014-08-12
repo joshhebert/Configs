@@ -701,7 +701,6 @@ getatomprop(Client *c, Atom prop) {
 
 XftColor
 getcolor(const char *colstr) {
-	Colormap cmap = DefaultColormap(dpy, screen);
 	XftColor color;
 
 	if(!XftColorAllocName(dpy, DefaultVisual(dpy, screen), DefaultColormap(dpy, screen), colstr, &color))
@@ -1788,25 +1787,35 @@ updatewmhints(Client *c) {
 }
 
 void
-view(const Arg *arg) {
-	if((arg->ui & TAGMASK) == selmon->tagset[selmon->seltags])
+view (const Arg *arg ){
+	int di;
+	unsigned int dui;
+	Window win, dummy;
+	if( ( arg->ui & TAGMASK ) == selmon->tagset[ selmon->seltags ] )
 		return;
 	selmon->seltags ^= 1; /* toggle sel tagset */
-	if(arg->ui & TAGMASK)
-		selmon->tagset[selmon->seltags] = arg->ui & TAGMASK;
-	focus(NULL);
-	arrange(selmon);
+	if( arg->ui & TAGMASK )
+		selmon->tagset[ selmon->seltags ] = arg->ui & TAGMASK;
+	focus( NULL );
+	arrange( selmon );
+
+	/*  Focus window at the current pointer location */
+	XQueryPointer( dpy, root, &dummy, &win, &di, &di, &di, &di, &dui );
+	focus( wintoclient( win ) );
+	XFlush( dpy );
 }
 
 Client *
-wintoclient(Window w) {
+wintoclient( Window w ) {
 	Client *c;
 	Monitor *m;
-
-	for(m = mons; m; m = m->next)
-		for(c = m->clients; c; c = c->next)
-			if(c->win == w)
+	for( m = mons; m; m = m->next ){
+		for( c = m->clients; c; c = c->next ){
+			if( c->win == w ){
 				return c;
+			}
+		}
+	}
 	return NULL;
 }
 
