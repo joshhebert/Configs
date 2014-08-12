@@ -1,12 +1,12 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
+static const char font[]            = "-*-droid sans mono-medium-r-*-*-*-*-*-*-*-*-*-*";
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
-static const char selbordercolor[]  = "#d70000";
-static const char selbgcolor[]      = "#d70000";
+static const char selbordercolor[]  = "#af0000";
+static const char selbgcolor[]      = "#af0000";
 static const char selfgcolor[]      = "#eeeeee";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -28,9 +28,9 @@ static const Bool resizehints = True; /* True means respect size hints in tiled 
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[|]",      tile },    /* first entry is default */
-	{ "[ ]",      NULL },    /* no layout function means floating behavior */
-	{ "[O]",      monocle },
+	{ "[-|-]",      tile },    /* first entry is default */
+	{ "[> <]",      NULL },    /* no layout function means floating behavior */
+	{ "[ O ]",      monocle },
 };
 
 /* key definitions */
@@ -47,6 +47,7 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "sakura", NULL };
+static const char *lockcmd[]  = { "i3lock", "-c", "000000", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -69,6 +70,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+    { MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd } },
     TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
