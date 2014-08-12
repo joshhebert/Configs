@@ -196,7 +196,7 @@ exe "hi! ColorColumn"   .s:fg_none        .s:bg_default        .s:fmt_none
 "		Cursor"
 "		CursorIM"
 exe "hi! CursorColumn"  .s:fg_default        .s:bg_default        .s:fmt_none
-exe "hi! CursorLine"    .s:fg_none           .s:bg_default        .s:fmt_bold
+exe "hi! CursorLine"    .s:fg_none           .s:bg_default        .s:fmt_undr
 exe "hi! Directory"     .s:fg_default        .s:bg_default        .s:fmt_none
 exe "hi! DiffAdd"       .s:fg_default        .s:bg_default        .s:fmt_none
 exe "hi! DiffChange"    .s:fg_default        .s:bg_default        .s:fmt_none
