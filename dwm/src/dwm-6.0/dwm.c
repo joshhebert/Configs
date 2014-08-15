@@ -1788,9 +1788,6 @@ updatewmhints(Client *c) {
 
 void
 view (const Arg *arg ){
-	int di;
-	unsigned int dui;
-	Window win, dummy;
 	if( ( arg->ui & TAGMASK ) == selmon->tagset[ selmon->seltags ] )
 		return;
 	selmon->seltags ^= 1; /* toggle sel tagset */
@@ -1799,10 +1796,6 @@ view (const Arg *arg ){
 	focus( NULL );
 	arrange( selmon );
 
-	/*  Focus window at the current pointer location */
-	XQueryPointer( dpy, root, &dummy, &win, &di, &di, &di, &di, &dui );
-	focus( wintoclient( win ) );
-	XFlush( dpy );
 }
 
 Client *
