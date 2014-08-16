@@ -1,4 +1,8 @@
 Configs
 =======
 
-All of my config files
+All of my config files for:
+    - Vim
+    - Zsh
+    - Tmux
+    - DWM
