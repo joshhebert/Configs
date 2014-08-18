@@ -6,3 +6,6 @@ All of my config files for:
     - Zsh
     - Tmux
     - DWM
+
+*BONUS*!
+    - iptables rules
