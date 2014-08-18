@@ -69,7 +69,7 @@
 	iptables -A INPUT  -p tcp --sport 8080 -m state --state ESTABLISHED     -j ACCEPT
 
 
-	#HTTP (Outgoing only)
+	#SSH (Outgoing only)
 	iptables -A OUTPUT -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
 	iptables -A INPUT  -p tcp --sport 22 -m state --state ESTABLISHED     -j ACCEPT
 
