@@ -24,9 +24,13 @@
         " Easy motion OP
         Plug 'Lokaltog/vim-easymotion'
 
+        " Gotta look good
+        Plug 'bling/vim-airline'
+        Plug 'paranoida/vim-airlineish'
+
 		" Annnnnnnndd Syntastic, because it rocks
 		Plug 'scrooloose/syntastic'
-        
+
     call plug#end()
 
 " Plugin Configuration
@@ -71,7 +75,7 @@
         " Without these mappings, `n` & `N` works fine. (These mappings just provide
         " different highlight method and have some other features )
         map  n <Plug>(easymotion-next)
-        map  N <Plug>(easymotion-prev)        
+        map  N <Plug>(easymotion-prev)
 
         let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
@@ -90,7 +94,15 @@
         " JK motions: Line motions
         map <Leader>j <Plug>(easymotion-j)
         map <Leader>k <Plug>(easymotion-k)
-	
+
+    " airline
+        " Set that theme
+        let g:airline_theme = 'airlineish'
+        let g:airline#extensions#tabline#enabled = 1
+        let g:airline#extensions#whitespace#enabled = 0
+        let g:airline_powerline_fonts = 1
+        set fillchars+=stl:\ ,stlnc:\
+
     " syntastic
 		set statusline+=%#warningmsg#
 		set statusline+=%{SyntasticStatuslineFlag()}
@@ -169,7 +181,7 @@ set spelllang=en
 " highlight search results
 set hlsearch
 
-" we use a dark background 
+" we use a dark background
 set background=dark
 
 " fuck the beeps
@@ -180,6 +192,9 @@ set tm=500
 
 " for hidden buffers
 set hidden
+
+" This is redundant because of airline
+set noshowmode
 
 " continue searching at top when hitting bottom
 set wrapscan
@@ -226,10 +241,10 @@ set nu
 " after 75 characters write a swap file
 set uc=75
 
-" tab width 
+" tab width
 set tabstop=4
 
-" do not behave like vi, vi is dead 
+" do not behave like vi, vi is dead
 set nocompatible
 
 " use the modelines commands

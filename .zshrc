@@ -188,9 +188,6 @@
         echo -n "$GIT_STATE"
     }                                     
 
-
-
-
     # Returns the git prompt if we're in a git repo. Otherwise, don't return anything
     git_prompt(){
         git rev-parse --git-dir > /dev/null 2>&1
