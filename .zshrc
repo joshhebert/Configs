@@ -27,7 +27,7 @@
 	alias 'l'='/usr/bin/ls --color=auto'
 	alias 'ls'='/usr/bin/ls --color=auto'
 	alias 'll'='/usr/bin/ls -Al --color=auto'
-
+    alias 'synctime'='sudo ntpd -gq'
 #Options
 	setopt AUTO_CD
 	setopt MULTIOS
@@ -314,5 +314,6 @@
     RPROMPT='%{$fg[red]%} %(?,,%?)'
     PROMPT='%{$fg[white]%}[${PWD/#$HOME/~}]$(git_prompt)%{$reset_color%} >> ' 
 
-
+# Quote
+echo "~ When did your heart become so cold?\n"
 

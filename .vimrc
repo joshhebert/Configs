@@ -1,7 +1,73 @@
-" ========================================
-" Settings
-" ========================================
+" Plugins
+" ===========================================================================
+	call plug#begin('~/.vim/plugged')
+		" Clean up all that gross whitespace
+		Plug 'ntpeters/vim-better-whitespace'
 
+		" Search on steroids
+		Plug 'Shougo/vimproc.vim'
+		Plug 'Shougo/unite.vim'
+
+		" Git Plugins
+		Plug 'airblade/vim-gitgutter'
+		Plug 'tpope/vim-fugitive'
+
+		" Easy Align
+		Plug 'junegunn/vim-easy-align'
+
+		" yeah boi, tab completion
+		Plug 'ervandew/supertab'
+
+		" Tagbar
+		Plug 'majutsushi/tagbar'
+
+		" Annnnnnnndd Syntastic, because it rocks
+		Plug 'scrooloose/syntastic'
+        
+    call plug#end()
+
+" Plugin Configuration
+" ===========================================================================
+	" vim-better-whitespace
+		let g:better_whitespace_enabled=0
+
+		" Toggle Whitespace
+		noremap <C-e> :ToggleWhitespace<cr>
+		" Clean Whitesace
+		noremap <C-w> :StripWhitespace<cr>
+
+	" unite
+		let g:unite_source_history_yank_enable = 1
+		try
+			let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
+			call unite#filters#matcher_default#use(['matcher_fuzzy'])
+		catch
+		endtry
+		" search a file in the filetree
+		noremap <space><space> :<C-u>Unite -start-insert file_rec/async<cr>
+		noremap <space>r <Plug>(unite_restart)
+
+	" vim-easy-align
+		vnoremap <silent> <Enter> :EasyAlign<cr>
+
+	" git-gutter
+		highlight clear SignColumn
+
+	" tagbar
+		noremap <F8> :TagbarToggle<CR>
+
+	" syntastic
+		set statusline+=%#warningmsg#
+		set statusline+=%{SyntasticStatuslineFlag()}
+		set statusline+=%*
+
+		let g:syntastic_always_populate_loc_list = 1
+		let g:syntastic_auto_loc_list = 1
+		let g:syntastic_check_on_open = 1
+		let g:syntastic_check_on_wq = 0
+
+" User Config
+" ===========================================================================
 " Load filetype plugins
 filetype plugin on
 filetype indent on
@@ -9,10 +75,6 @@ filetype indent on
 " Language Specific Settings
 " settings for the c language
 au FileType c,h           set ai sw=4 ts=4 noexpandtab cindent omnifunc=ccomplete#Complete
-" settings for python
-au FileType python set ai expandtab
-let python_highlight_all = 1
-
 
 let s  = ""
 let s .= "%<"                                 | " truncate at the start
@@ -35,10 +97,8 @@ colorscheme hashcheck
 " is a shell script
 au BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | silent !chmod a+x <afile> | endif
 
-
 " Needed for some plugins
 set nocp
-
 
 " My terminal is fast
 set ttyfast
@@ -88,9 +148,6 @@ set hidden
 
 " continue searching at top when hitting bottom
 set wrapscan
-
-"always show the command
-set showcmd
 
 " Continue searching at top when hitting bottom
 set wrapscan
@@ -152,11 +209,6 @@ set background=dark
 " 256 colors
 se t_Co=256
 
-
-" Highlight the word under the cursor
-highlight flicker cterm=bold ctermfg=white
-au CursorMoved <buffer> exe 'match flicker /\V\<'.escape(expand('<cword>'), '/').'\>/'
-
 " Center the line when searching
 map n nzz
 map N Nzz
@@ -171,28 +223,10 @@ filetype plugin on
 syntax enable
 set grepprg=grep\ -nH\ $*
 
-
-let color = "true"
-
-if has("syntax")
-    if color == "true"
-		" This will switch colors ON
-		so ${VIMRUNTIME}/syntax/syntax.vim
-	else
-		" this switches colors OFF
-		syntax off
-		set t_Co=0
-    endif
-endif
-
 set pumheight=7
 
-" comment types 
-set comments=b:#,:%,fb:-,n:),n:> fo=cqrt
 
-" Key bindings
-
-" force using hjkl$
+" force using hjkl
 noremap <Up>       :echoerr "Arrow keys disabled in command mode"<CR>$,
 noremap <Down>     :echoerr "Arrow keys disabled in command mode"<CR>$,
 noremap <Left>     :echoerr "Arrow keys disabled in command mode"<CR>$,
@@ -209,29 +243,13 @@ nnoremap ` '
 nnoremap ; :
 nnoremap : ;
 
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
-
 " ==============================================
 " Mappings
 " ==============================================
 
-" use shell with ctrl-z
-map <C-Z> :shell
+" New tab with ctrl-t
+map <C-t> ;tabnew<CR>
 
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
-
-" ==============================================
-" Functions
-" ==============================================
-
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
-    exe "normal mz"
-    %s/\s\+$//ge
-    %exe "normal `z"
-endfunc
-
