@@ -52,6 +52,7 @@
 
 	" git-gutter
 		highlight clear SignColumn
+		let g:gitgutter_realtime = 1
 
 	" tagbar
 		noremap <F8> :TagbarToggle<CR>
