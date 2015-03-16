@@ -12,11 +12,12 @@
 
 # Plugin loading (May need to be commented out, depending on system)
 	
-	# This should be moved to ~/.zsh_config
-	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	
+	source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    # The install script @ .zsh/scm_breeze/install.sh MUST be run before this will work
+    [ -s "/home/josh/.scm_breeze/scm_breeze.sh" ] && source "/home/josh/.scm_breeze/scm_breeze.sh"
 
 	# Maybe package this up into ~/.zsh_config, if at all possible
-	[ -s "/home/josh/.scm_breeze/scm_breeze.sh" ] && source "/home/josh/.scm_breeze/scm_breeze.sh"
 
 # Aliases
 	alias 'pacman'='packer-color'
@@ -314,3 +315,6 @@
 # Quote
 echo "~ When did your heart become so cold?\n"
 
+
+
+[ -s "/home/josh/.scm_breeze/scm_breeze.sh" ] && source "/home/josh/.scm_breeze/scm_breeze.sh"

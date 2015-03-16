@@ -4,9 +4,6 @@
 		" Clean up all that gross whitespace
 		Plug 'ntpeters/vim-better-whitespace'
 
-        " tmux integration
-        Plug 'mhinz/vim-tmuxify'
-
 		" Search on steroids
 		Plug 'Shougo/vimproc.vim'
 		Plug 'Shougo/unite.vim'
@@ -225,6 +222,11 @@ nnoremap  :set invpaste paste?
 " Let's make vim panes not suck, shall we?
 set splitbelow
 set splitright
+
+" Sharing is caring (use system clipboard as primary buffer)
+" This allows us to yank between vim processes
+" Requires vim to be compiled with +xterm_clipboard
+set clipboard=unnamed
 
 " Syntax higlighting
 " ===========================================================================
