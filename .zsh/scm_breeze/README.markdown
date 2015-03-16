@@ -6,7 +6,13 @@ a repository index with tab completion, and many other useful features.
 
 <hr/>
 
-## Demo video
+## Demos
+
+Adding a range of files, and pressing `Ctrl+X, C` to commit:
+
+<center><img src="http://i.imgur.com/3fD8cpo.gif" title="SCM Breeze Example Gif" /></center>
+
+<br/>
 
 <center><a href="http://www.youtube.com/watch?v=iKdp6uBfrvc" target="_blank"><img src="http://i.imgur.com/l7aGG.png"></a></center>
 
@@ -287,7 +293,7 @@ git clone git://github.com/ndbroadbent/scm_breeze.git ~/.scm_breeze
 source ~/.bashrc   # or source ~/.zshrc
 ```
 
-The install script just adds the following line to your `.bashrc` or `.zshrc`:
+The install script creates required default configs and adds the following line to your `.bashrc` or `.zshrc`:
 
 `[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"`
 

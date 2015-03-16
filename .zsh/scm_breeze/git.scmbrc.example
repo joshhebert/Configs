@@ -40,7 +40,7 @@ git_show_files_alias="gsf"
 exec_scmb_expand_args_alias="ge"
 # 2. Commands that handle paths (with shortcut args expanded)
 git_checkout_alias="gco"
-git_checkout_branch_alias="gcob"
+git_checkout_branch_alias="gcb"
 git_commit_alias="gc"
 git_commit_verbose_alias="gcv"
 git_reset_alias="grs"
@@ -95,6 +95,8 @@ git_stash_apply_alias="gasha"
 git_stash_pop_alias="gashp"
 git_stash_list_alias="gashl"
 git_tag_alias="gt"
+# Hub aliases (https://github.com/github/hub)
+git_pull_request_alias="gpr"
 
 
 # Git Keyboard Shortcuts
@@ -112,3 +114,5 @@ git_commit_all_with_ci_skip_keys="\C-xv"  # CTRL+x, v    (Appends [ci skip] to c
 shell_command_wrapping_enabled="true"
 # Here you can tweak the list of wrapped commands.
 scmb_wrapped_shell_commands="vim emacs gedit cat rm cp mv ln cd"
+# Add numbered shortcuts to output of ls -l, just like 'git status'
+shell_ls_aliases_enabled="true"
