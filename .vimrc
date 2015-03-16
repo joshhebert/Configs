@@ -26,7 +26,6 @@
 
         " Gotta look good
         Plug 'bling/vim-airline'
-        Plug 'paranoida/vim-airlineish'
 
 		" Annnnnnnndd Syntastic, because it rocks
 		Plug 'scrooloose/syntastic'
@@ -97,7 +96,7 @@
 
     " airline
         " Set that theme
-        let g:airline_theme = 'airlineish'
+        let g:airline_theme = 'hybrid'
         let g:airline#extensions#tabline#enabled = 1
         let g:airline#extensions#whitespace#enabled = 0
         let g:airline_powerline_fonts = 1
@@ -180,9 +179,6 @@ set spelllang=en
 
 " highlight search results
 set hlsearch
-
-" we use a dark background
-set background=dark
 
 " fuck the beeps
 set noerrorbells
