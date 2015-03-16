@@ -219,6 +219,12 @@ set t_Co=256
 map n nzz
 map N Nzz
 
+" fix pasting so you dont get the step down effect
+nnoremap  :set invpaste paste?
+
+" Let's make vim panes not suck, shall we?
+set splitbelow
+set splitright
 
 " Syntax higlighting
 " ===========================================================================
@@ -232,14 +238,14 @@ set grepprg=grep\ -nH\ $*
 set pumheight=7
 
 
+" Mappings
+" ===========================================================================
+
 " force using hjkl
 noremap <Up>       :echoerr "Arrow keys disabled in command mode"<CR>$,
 noremap <Down>     :echoerr "Arrow keys disabled in command mode"<CR>$,
 noremap <Left>     :echoerr "Arrow keys disabled in command mode"<CR>$,
 noremap <Right>    :echoerr "Arrow keys disabled in command mode"<CR>$,
-
-"fix pasting so you dont get the step down effect
-nnoremap  :set invpaste paste?
 
 " Swap the two weird apostrophe things
 nnoremap ' `
@@ -249,15 +255,18 @@ nnoremap ` '
 nnoremap ; :
 nnoremap : ;
 
-" Mappings
-" ===========================================================================
-
 " New tab with ctrl-t
 map <C-t> ;tabnew<CR>
 
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
+
+" Make vim panes usable with my tmux setup (and also more sane)
+nnoremap <C-h> <C-w><C-h>
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
 
 " This needs to be last to work (hell if I know why)
 " ===========================================================================
