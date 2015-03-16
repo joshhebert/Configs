@@ -138,7 +138,7 @@ let s .= "/%LL"                               | " number of lines
 set statusline=%!s
 
 " Load my clor scheme
-colorscheme hashcheck
+colorscheme neverland
 
 " automatically give executable permissions if file begins with #! and contains
 " is a shell script
