@@ -5,7 +5,7 @@
 
 set background=dark
 
-hi Normal           ctermfg=256 ctermbg=232
+hi Normal           ctermfg=255 ctermbg=232 
 
 hi Boolean          ctermfg=135
 hi Character        ctermfg=143
@@ -92,9 +92,9 @@ hi Comment          ctermfg=101
 hi ColorColumn                  ctermbg=235
 hi CursorLine                   ctermbg=234 cterm=none
 hi CursorColumn                 ctermbg=234
-hi LineNr           ctermfg=241             ctermbg=232
-hi NonText          ctermfg=232             ctermbg=232
+hi LineNr           ctermfg=241 ctermbg=232
+hi NonText          ctermfg=232 ctermbg=232
 
-hi TabLine          ctermfg=100             ctermbg=232
-hi TabLineFill      ctermfg=232             ctermbg=232
-hi TabLineSel       ctermfg=220             ctermbg=234
+hi TabLine          ctermfg=100 ctermbg=232
+hi TabLineFill      ctermfg=232 ctermbg=232
+hi TabLineSel       ctermfg=220 ctermbg=234

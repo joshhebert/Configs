@@ -4,6 +4,9 @@
 		" Clean up all that gross whitespace
 		Plug 'ntpeters/vim-better-whitespace'
 
+        " tmux integration
+        Plug 'mhinz/vim-tmuxify'
+
 		" Search on steroids
 		Plug 'Shougo/vimproc.vim'
 		Plug 'Shougo/unite.vim'
@@ -11,9 +14,6 @@
 		" Git Plugins
 		Plug 'airblade/vim-gitgutter'
 		Plug 'tpope/vim-fugitive'
-
-		" Easy Align
-		Plug 'junegunn/vim-easy-align'
 
 		" yeah boi, tab completion
 		Plug 'ervandew/supertab'
@@ -26,9 +26,6 @@
 
         " Gotta look good
         Plug 'bling/vim-airline'
-
-		" Annnnnnnndd Syntastic, because it rocks
-		Plug 'scrooloose/syntastic'
 
     call plug#end()
 
@@ -101,17 +98,7 @@
         let g:airline#extensions#whitespace#enabled = 0
         let g:airline_powerline_fonts = 1
         set fillchars+=stl:\ ,stlnc:\
-
-    " syntastic
-		set statusline+=%#warningmsg#
-		set statusline+=%{SyntasticStatuslineFlag()}
-		set statusline+=%*
-
-		let g:syntastic_always_populate_loc_list = 1
-		let g:syntastic_auto_loc_list = 1
-		let g:syntastic_check_on_open = 1
-		let g:syntastic_check_on_wq = 0
-
+        set timeoutlen=5
 " User Config
 " ===========================================================================
 " Load filetype plugins
@@ -121,27 +108,6 @@ filetype indent on
 " Language Specific Settings
 " settings for the c language
 au FileType c,h           set ai sw=4 ts=4 noexpandtab cindent omnifunc=ccomplete#Complete
-
-let s  = ""
-let s .= "%<"                                 | " truncate at the start
-let s .= "%f%8* "                             | " file name
-let s .= "%r"                                 | " readonly flag
-let s .= '%{&bomb?"!":""} '                   | " byte-order mark flag
-let s .= "%*%="                               | " right-justify after here
-let s .= "%9*%m%* "                           | " modified flag
-let s .= "0x%02B "                            | " hex value of current byte
-let s .= "%l"                                 | " current line
-let s .= ":%c%V"                              | " column number, virtual column (if different)
-let s .= " %P"                                | " percentage
-let s .= "/%LL"                               | " number of lines
-set statusline=%!s
-
-" Load my clor scheme
-colorscheme neverland
-
-" automatically give executable permissions if file begins with #! and contains
-" is a shell script
-au BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | silent !chmod a+x <afile> | endif
 
 " Needed for some plugins
 set nocp
@@ -188,9 +154,6 @@ set tm=500
 
 " for hidden buffers
 set hidden
-
-" This is redundant because of airline
-set noshowmode
 
 " continue searching at top when hitting bottom
 set wrapscan
@@ -249,20 +212,16 @@ set modeline
 " use 3 lines for modelines
 set modelines=3
 
-" Use brighter colors if your xterm has a dark background.
-set background=dark
-
 " 256 colors
-se t_Co=256
+set t_Co=256
 
 " Center the line when searching
 map n nzz
 map N Nzz
 
 
-"========================
 " Syntax higlighting
-"========================
+" ===========================================================================
 
 " Needed for Syntax Highlighting and stuff
 filetype on
@@ -290,9 +249,8 @@ nnoremap ` '
 nnoremap ; :
 nnoremap : ;
 
-" ==============================================
 " Mappings
-" ==============================================
+" ===========================================================================
 
 " New tab with ctrl-t
 map <C-t> ;tabnew<CR>
@@ -300,3 +258,14 @@ map <C-t> ;tabnew<CR>
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
+
+" This needs to be last to work (hell if I know why)
+" ===========================================================================
+set noshowmode
+
+" Load my color scheme
+" ===========================================================================
+hi clear
+" No BCE (Background Colour Erase)
+set t_ut=
+colorscheme neverland
