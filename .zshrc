@@ -5,19 +5,40 @@
 	autoload -Uz down-line-or-beginning-search
 	zle -N down-line-or-beginning-search
 	autoload -U colors && colors
-
+    zle -N zle-line-init
 # The most imprtant bit
 	export EDITOR=/usr/bin/vim
 
 
-# Plugin loading (May need to be commented out, depending on system)
+# Plugin loading	
 	
-	
-	source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    # The install script @ .zsh/scm_breeze/install.sh MUST be run before this will work
+    # Use antigen for what we can
+	source ~/.zsh/antigen/antigen.zsh
+        antigen use oh-my-zsh
+        
+        # Be more like fish
+        antigen bundle zsh-users/zsh-syntax-highlighting
+        
+        # Tell me where to get what I need
+        antigen bundle zsh-users/zsh-completions src
+        
+        # Better directory traversal
+        antigen bundle rupa/z
+            add-zsh-hook precmd _z_precmd
+            function _z_precmd {
+                _z --add "$PWD"
+            }
+
+        # Sometimes I forget what's installed
+        # On Arch, you MUST have pkgfile installed
+        antigen bundle command-not-found
+
+    antigen apply
+
+    # This fucker requires some manual intervention
+    # I should make a setup script that deals with this and vimproc
     [ -s "/home/josh/.scm_breeze/scm_breeze.sh" ] && source "/home/josh/.scm_breeze/scm_breeze.sh"
 
-	# Maybe package this up into ~/.zsh_config, if at all possible
 
 # Aliases
 	alias 'pacman'='packer-color'
