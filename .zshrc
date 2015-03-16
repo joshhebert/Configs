@@ -51,7 +51,7 @@
 	alias 'll'='/usr/bin/ls -Al --color=auto'
     alias 'synctime'='sudo ntpd -gq'
     alias 'tmux'='tmux -2'
-
+    alias 'urxvt'='urxvt & sleep .8s && transset-df -a -m .8'
 #Options
 	setopt AUTO_CD
 	setopt MULTIOS

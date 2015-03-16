@@ -1,0 +1,50 @@
+!------------------------
+! basic urxvt config
+!------------------------
+URxvt.saveLines: 1000
+URxvt.scrollBar: false
+URxvt.font: xft:Droid Sans Mono for Powerline:pixelsize=12
+URxvt*geometry: 100x33
+! optional icon
+URxvt*iconFile: /usr/share/icons/gnome/48x48/apps/utilities-terminal.png
+urxvt*cursorBlink: true
+urxvt*cursorUnderline: true
+urxvt*secondaryScroll: false
+urxvt*borderLess: false
+
+!------------------------
+! solarized colors 
+!------------------------
+!! Source http://github.com/altercation/solarized
+
+*background: #000000
+*foreground: #ffffff
+
+*cursorColor: #93a1a1
+*pointerColorBackground: #586e75
+*pointerColorForeground: #93a1a1
+
+!! black dark/light
+*color0: #073642
+*color8: #002b36
+!! red dark/light
+*color1: #dc322f
+*color9: #cb4b16
+!! green dark/light
+*color2: #588266
+*color10: #58B466
+!! yellow dark/light
+*color3: #b58900
+*color11: #B59600
+!! blue dark/light
+*color4: #175480
+*color12: #268bd2
+!! magenta dark/light
+*color5: #963682
+*color13: #d33682
+!! cyan dark/light
+*color6: #2aa198
+*color14: #35CCC1
+!! white dark/light
+*color7: #999999
+*color15: #fdf6e3
