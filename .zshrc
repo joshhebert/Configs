@@ -50,6 +50,8 @@
 	alias 'ls'='/usr/bin/ls --color=auto'
 	alias 'll'='/usr/bin/ls -Al --color=auto'
     alias 'synctime'='sudo ntpd -gq'
+    alias 'tmux'='tmux -2'
+
 #Options
 	setopt AUTO_CD
 	setopt MULTIOS
