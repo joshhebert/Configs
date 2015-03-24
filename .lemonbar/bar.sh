@@ -37,11 +37,9 @@ clock() {
 
 while :; do
   buf=""
-  buf="${buf}$(workspace)"
-  buf="${buf}                                                                                                                                   "
-  buf="${buf}$(clock)"
-  buf="${buf}                                                                                                                                                      "
-  buf="${buf}$(battery)"
+  buf="${buf}%{l}$(workspace)"
+  buf="${buf}%{c}$(clock)"
+  buf="${buf}%{r}$(battery)"
   echo "${buf}"
-  sleep .01;
+  sleep .1;
 done
