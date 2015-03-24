@@ -5,7 +5,7 @@
 	autoload -Uz down-line-or-beginning-search
 	zle -N down-line-or-beginning-search
 	autoload -U colors && colors
-    zle -N zle-line-init
+
 # The most imprtant bit
 	export EDITOR=/usr/bin/vim
 
@@ -52,6 +52,7 @@
     alias 'synctime'='sudo ntpd -gq'
     alias 'tmux'='tmux -2'
     alias 'urxvt'='urxvt & sleep .8s && transset-df -a -m .8'
+    alias 'steam'='HOME=/opt/steam steam'
 #Options
 	setopt AUTO_CD
 	setopt MULTIOS
@@ -338,6 +339,3 @@
 # Quote
 echo "~ When did your heart become so cold?\n"
 
-
-
-[ -s "/home/josh/.scm_breeze/scm_breeze.sh" ] && source "/home/josh/.scm_breeze/scm_breeze.sh"

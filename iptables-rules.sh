@@ -60,7 +60,16 @@
 	iptables -A INPUT -d 255.255.255.255  -j LOGGING-INBOUND
 
 #Specific Protocols
-	#HTTP (Outgoing only)
+    #Steam (Bidirectional)
+    iptables -A OUTPUT -p udp --dport 27000:27015 -j ACCEPT
+    iptables -A OUTPUT -p udp --dport 27015:27030 -j ACCEPT
+    iptables -A OUTPUT -p tcp --dport 27014:27050 -j ACCEPT
+    iptables -A OUTPUT -p udp --dport 3478 -j ACCEPT
+    iptables -A OUTPUT -p udp --dport 4379 -j ACCEPT
+    iptables -A OUTPUT -p udp --dport 4380 -j ACCEPT
+    iptables -A OUTPUT -p udp --dport 4380 -j ACCEPT
+
+    #HTTP (Outgoing only)
 	iptables -A OUTPUT -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
 	iptables -A INPUT  -p tcp --sport 80 -m state --state ESTABLISHED     -j ACCEPT
 
