@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-#
-# bar.sh - by joe
-#
 
 ## COLORS
 
@@ -27,6 +24,9 @@ battery() {
     acpi | cut -d' ' -f4 | sed s/,//g
 }
 
+volume(){
+    amixer | head -n 7 | tail -n 1 | cut -d' ' -f 7-8
+}
 
 clock() {
   TIME=$(date "+%H:%M")
@@ -39,7 +39,7 @@ while :; do
   buf=""
   buf="${buf}%{l}$(workspace)"
   buf="${buf}%{c}$(clock)"
-  buf="${buf}%{r}$(battery)"
+  buf="${buf}%{r}BAT0 >> [$(battery)] || AUDIO >> $(volume) "
   echo "${buf}"
   sleep .1;
 done

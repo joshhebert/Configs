@@ -1,1 +1,1 @@
-~/.lemonbar/bar.sh | lemonbar -g x24 -d -f -*-profont-*-*-*-*-12-*-*-*-*-*-*-* -B "#ff101820" -F "#ff687078" &
+~/.lemonbar/bar.sh | lemonbar -g x24 -d -f -*-profont-medium-*-normal-*-15-*-*-*-*-*-*-*  -B "#dd101820" -F "#ffaaaaaa" &

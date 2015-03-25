@@ -44,7 +44,7 @@ urxvt*borderLess: false
 *color13: #d33682
 !! cyan dark/light
 *color6: #2aa198
-*color14: #35CCC1
+*color14: #101820
 !! white dark/light
 *color7: #999999
 *color15: #fdf6e3

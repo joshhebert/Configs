@@ -1,3 +1,6 @@
+# Set path
+export PATH=$PATH:/home/josh/.local/bin
+
 # Autoloads
 	autoload -U compinit && compinit
 	autoload -Uz up-line-or-beginning-search
@@ -336,6 +339,6 @@
     RPROMPT='%{$fg[red]%} %(?,,%?)'
     PROMPT='%{$fg[white]%}[${PWD/#$HOME/~}]$(git_prompt)%{$reset_color%} >> ' 
 
-# Quote
-echo "~ When did your heart become so cold?\n"
+# Quote 
+echo "\n   \e[1;36m~ \e[1;37mWhen did your heart become so cold?\e[0m\n"
 
