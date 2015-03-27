@@ -15,7 +15,6 @@ urxvt*borderLess: false
 !------------------------
 ! solarized colors 
 !------------------------
-!! Source http://github.com/altercation/solarized
 
 *background: #000000
 *foreground: #ffffff
@@ -25,8 +24,8 @@ urxvt*borderLess: false
 *pointerColorForeground: #93a1a1
 
 !! black dark/light
-*color0: #073642
-*color8: #002b36
+*color0: #000000
+*color8: #555555
 !! red dark/light
 *color1: #dc322f
 *color9: #cb4b16
@@ -43,8 +42,8 @@ urxvt*borderLess: false
 *color5: #963682
 *color13: #d33682
 !! cyan dark/light
-*color6: #2aa198
-*color14: #101820
+*color6: #2E55757
+*color14: #3D7070
 !! white dark/light
 *color7: #999999
 *color15: #fdf6e3

@@ -2,6 +2,8 @@
 
 ## COLORS
 
+echo $$ > bar.pid
+
 cya="#ff3d7070"
 yel="#ff89531e"
 whi="#ffd0d8e0"
@@ -20,6 +22,11 @@ workspace() {
   done
 }
 
+temp(){
+    acpi -t | head -n1 | cut -d' ' -f 4  
+}
+
+
 battery() {
     acpi | cut -d' ' -f4 | sed s/,//g
 }
@@ -29,7 +36,7 @@ volume(){
 }
 
 clock() {
-  TIME=$(date "+%H:%M")
+  TIME=$(date "+%H:%M:%S - %A, %B %e")
   echo "%{B-}%{F-}${TIME}"
 }
 
@@ -39,7 +46,7 @@ while :; do
   buf=""
   buf="${buf}%{l}$(workspace)"
   buf="${buf}%{c}$(clock)"
-  buf="${buf}%{r}BAT0 >> [$(battery)] || AUDIO >> $(volume) "
+  buf="${buf}%{r}TEMP >> [$(temp)°C] || BAT0 >> [$(battery)] || AUDIO >> $(volume)"
   echo "${buf}"
-  sleep .1;
+  sleep .2;
 done

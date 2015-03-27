@@ -42,6 +42,8 @@ export PATH=$PATH:/home/josh/.local/bin
     # I should make a setup script that deals with this and vimproc
     [ -s "/home/josh/.scm_breeze/scm_breeze.sh" ] && source "/home/josh/.scm_breeze/scm_breeze.sh"
 
+# Colors for ls
+    source ~/.local/bin/set_ls_colors.sh
 
 # Aliases
 	alias 'pacman'='packer-color'
@@ -54,8 +56,6 @@ export PATH=$PATH:/home/josh/.local/bin
 	alias 'll'='/usr/bin/ls -Al --color=auto'
     alias 'synctime'='sudo ntpd -gq'
     alias 'tmux'='tmux -2'
-    alias 'urxvt'='urxvt & sleep .8s && transset-df -a -m .8'
-    alias 'steam'='HOME=/opt/steam steam'
 #Options
 	setopt AUTO_CD
 	setopt MULTIOS
