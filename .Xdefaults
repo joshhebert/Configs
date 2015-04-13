@@ -12,11 +12,16 @@ urxvt*cursorUnderline: true
 urxvt*secondaryScroll: false
 urxvt*borderLess: false
 
+UURxvt*.transparent: true
+URxvt*.shading: 110
+!URxvt*depth: 256
+!URxvt*background: rgba:2f00/2f00/2f00/dddd
+
 !------------------------
 ! solarized colors 
 !------------------------
 
-*background: #000000
+*background: #202020
 *foreground: #ffffff
 
 *cursorColor: #93a1a1
@@ -24,7 +29,7 @@ urxvt*borderLess: false
 *pointerColorForeground: #93a1a1
 
 !! black dark/light
-*color0: #000000
+*color0: #333333
 *color8: #555555
 !! red dark/light
 *color1: #dc322f
@@ -42,7 +47,7 @@ urxvt*borderLess: false
 *color5: #963682
 *color13: #d33682
 !! cyan dark/light
-*color6: #2E55757
+*color6: #2E5757
 *color14: #3D7070
 !! white dark/light
 *color7: #999999

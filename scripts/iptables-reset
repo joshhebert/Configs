@@ -1,4 +1,4 @@
-# Flush
+# Flush all rules from iptables
 	iptables -F
 	iptables -X
 	iptables -t nat -F

@@ -30,8 +30,8 @@
 
 
 # Check Packet Validity
-	iptables -A INPUT   -m state --state INVALID -j LOGGING-INBOUND							
-	iptables -A OUTPUT  -m state --state INVALID -j LOGGING-OUTBOUND									
+	iptables -A INPUT   -m state --state INVALID -j LOGGING-INBOUND
+	iptables -A OUTPUT  -m state --state INVALID -j LOGGING-OUTBOUND
 
 # Drop fragmented packets
 	iptables -A INPUT -f -j LOGGING-INBOUND
@@ -39,24 +39,24 @@
 # Some sketchy packets
 	iptables  -A INPUT -p tcp --tcp-flags ALL FIN,URG,PSH 			-j LOGGING-INBOUND
 	iptables  -A INPUT -p tcp --tcp-flags ALL ALL 		  			-j LOGGING-INBOUND
-	iptables  -A INPUT -p tcp --tcp-flags ALL NONE 					-j LOGGING-INBOUND 
-	iptables  -A INPUT -p tcp --tcp-flags SYN,RST SYN,RST 			-j LOGGING-INBOUND 
-	iptables  -A INPUT -p tcp --tcp-flags SYN,FIN SYN,FIN 			-j LOGGING-INBOUND 
-	iptables  -A INPUT -p tcp --tcp-flags FIN,ACK FIN 				-j LOGGING-INBOUND 
+	iptables  -A INPUT -p tcp --tcp-flags ALL NONE 					-j LOGGING-INBOUND
+	iptables  -A INPUT -p tcp --tcp-flags SYN,RST SYN,RST 			-j LOGGING-INBOUND
+	iptables  -A INPUT -p tcp --tcp-flags SYN,FIN SYN,FIN 			-j LOGGING-INBOUND
+	iptables  -A INPUT -p tcp --tcp-flags FIN,ACK FIN 				-j LOGGING-INBOUND
 	iptables  -A INPUT -p tcp --tcp-flags ALL SYN,RST,ACK,FIN,URG 	-j LOGGING-INBOUND
 
 #Reject spoofed packets
-	iptables -A INPUT -s 10.0.0.0/8       -j LOGGING-INBOUND								
-	iptables -A INPUT -s 192.0.0.1/24     -j LOGGING-INBOUND								
-	iptables -A INPUT -s 169.254.0.0/16   -j LOGGING-INBOUND								
-	iptables -A INPUT -s 172.16.0.0/12    -j LOGGING-INBOUND								
-	iptables -A INPUT -s 224.0.0.0/4      -j LOGGING-INBOUND								
-	iptables -A INPUT -d 224.0.0.0/4      -j LOGGING-INBOUND								
-	iptables -A INPUT -s 240.0.0.0/5      -j LOGGING-INBOUND								
-	iptables -A INPUT -d 240.0.0.0/5      -j LOGGING-INBOUND								
-	iptables -A INPUT -s 0.0.0.0/8        -j LOGGING-INBOUND								
-	iptables -A INPUT -d 0.0.0.0/8        -j LOGGING-INBOUND								
-	iptables -A INPUT -d 239.255.255.0/24 -j LOGGING-INBOUND								
+	iptables -A INPUT -s 10.0.0.0/8       -j LOGGING-INBOUND
+	iptables -A INPUT -s 192.0.0.1/24     -j LOGGING-INBOUND
+	iptables -A INPUT -s 169.254.0.0/16   -j LOGGING-INBOUND
+	iptables -A INPUT -s 172.16.0.0/12    -j LOGGING-INBOUND
+	iptables -A INPUT -s 224.0.0.0/4      -j LOGGING-INBOUND
+	iptables -A INPUT -d 224.0.0.0/4      -j LOGGING-INBOUND
+	iptables -A INPUT -s 240.0.0.0/5      -j LOGGING-INBOUND
+	iptables -A INPUT -d 240.0.0.0/5      -j LOGGING-INBOUND
+	iptables -A INPUT -s 0.0.0.0/8        -j LOGGING-INBOUND
+	iptables -A INPUT -d 0.0.0.0/8        -j LOGGING-INBOUND
+	iptables -A INPUT -d 239.255.255.0/24 -j LOGGING-INBOUND
 	iptables -A INPUT -d 255.255.255.255  -j LOGGING-INBOUND
 
 #Specific Protocols

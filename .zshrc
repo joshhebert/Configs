@@ -340,5 +340,8 @@ export PATH=$PATH:/home/josh/.local/bin
     PROMPT='%{$fg[white]%}[${PWD/#$HOME/~}]$(git_prompt)%{$reset_color%} >> ' 
 
 # Quote 
-echo "\n   \e[1;36m~ \e[1;37mWhen did your heart become so cold?\e[0m\n"
+echo -n "\e[1;36m~\n\e[1;37m"
+fortune -eo -sn 300 portal portal2 archer firefly
+echo -n "\e[1;36m~\n\e[1;37m"
+echo "\e[0m\n"
 
