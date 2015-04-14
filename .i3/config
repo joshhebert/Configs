@@ -12,6 +12,8 @@ focus_on_window_activation urgent
 # fix graphics glitch
 new_window pixel
 
+# Friendly names for workspaces
+
 
 
 # Hotkeys
@@ -42,38 +44,29 @@ bindsym --release Shift+Print exec scrot -s $HOME/Pictures/screenshot-$(date +%Y
 
 # Navigation Controls
 #=====================================================
-bindsym $mod+Left           focus left
-bindsym $mod+Right          focus right
-bindsym $mod+Up             focus up
-bindsym $mod+Down           focus down
 
-bindsym $mod+Shift+Right       workspace next
-bindsym $mod+Shift+Left        workspace prev
+bindsym $mod+Up             exec --no-startup-id i3man -d next
+bindsym $mod+Down           exec --no-startup-id i3man -d prev
+bindsym $mod+Left           exec --no-startup-id i3man -d prev --relative
+bindsym $mod+Right          exec --no-startup-id i3man -d next --relative
 
-bindsym $mod+1              workspace 1
-bindsym $mod+2              workspace 2
-bindsym $mod+3              workspace 3
-bindsym $mod+4              workspace 4
-bindsym $mod+5              workspace 5
-bindsym $mod+6              workspace 6
-bindsym $mod+7              workspace 7
-bindsym $mod+8              workspace 8
-bindsym $mod+9              workspace 9
 
-bindsym $mod+Shift+1        move to workspace 1
-bindsym $mod+Shift+2        move to workspace 2
-bindsym $mod+Shift+3        move to workspace 3
-bindsym $mod+Shift+4        move to workspace 4
-bindsym $mod+Shift+5        move to workspace 5
-bindsym $mod+Shift+6        move to workspace 6
-bindsym $mod+Shift+7        move to workspace 7
-bindsym $mod+Shift+8        move to workspace 8
-bindsym $mod+Shift+9        move to workspace 9
+bindsym $mod+Shift+Up       exec --no-startup-id i3man -d next --pull
+bindsym $mod+Shift+Down     exec --no-startup-id i3man -d prev --pull
+bindsym $mod+Shift+Left     exec --no-startup-id i3man -d prev --relative --pull
+bindsym $mod+Shift+Right    exec --no-startup-id i3man -d next --relative --pull
 
-bindsym $mod+Control+Left     move left
-bindsym $mod+Control+Down     move down
-bindsym $mod+Control+Up       move up
-bindsym $mod+Control+Right    move right
+# Super key used for window manipulation in the
+# workspace
+bindsym Mod4+Left           focus left
+bindsym Mod4+Right          focus right
+bindsym Mod4+Up             focus up
+bindsym Mod4+Down           focus down
+
+bindsym $mod+Mod4+Left     move left
+bindsym $mod+Mod4+Down     move down
+bindsym $mod+Mod4+Up       move up
+bindsym $mod+Mod4+Right    move right
 
 bindsym $mod+v split h
 bindsym $mod+c split v

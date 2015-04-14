@@ -1,0 +1,233 @@
+#!/usr/bin/ruby
+require 'optparse'
+
+Workspace = Struct.new( "Workspace", :number, :name, :visible )
+#$max_ws = 20
+$max_ws = 121575219
+$min_ws = 0
+
+# External i3 calls
+def i3_switch_to_workspace( workspace_number )
+    command = 'i3-msg \'workspace number ' + workspace_number.to_s + '\''
+    puts command
+    %x{ #{command} }
+end
+
+def i3_move_window_to_workspace( workspace_number )
+    command = 'i3-msg \'move to workspace number ' + workspace_number.to_s + '\''
+    puts command
+    %x{ #{command} }
+end
+
+def get_workspaces()
+    workspaces = %x{ i3-msg -t get_workspaces }
+    m = workspaces.scan( /{"num":\d+,"name":"\w*","visible":\w*,/ )
+
+    spaces = []
+    m.each do | s |
+        # Clean up the output of i3-msg
+        # Could totally do this with a JSON parser,
+        # but I don't want the additional deps
+        s[ "{\"num\":" ] = ""
+        s[ "\"name\":" ] = ""
+        s[ "\"visible\":" ] = ""
+        s = s.split( "," )
+        s[ 1 ][ "\"" ] = ""
+        s[ 1 ][ "\"" ] = ""
+
+        # Translate from string to bool
+        if( s[ 2 ] == "true" )
+            s[ 2 ] = true
+        elsif( s[ 2 ] == "false" )
+            s[ 2 ] = false
+        end
+       
+        # Translate from string to int
+        s[ 0 ] = s[ 0 ].to_i
+
+        # Add to the list of available workspaces
+        spaces.push( Workspace.new( s[0], s[1], s[2] ) )
+    end
+    return spaces
+end
+
+
+def get_next_largest_workspace()
+    workspaces = get_workspaces()
+    current = get_current_workspace_num()
+    flag = 0
+    workspaces.each do | w |
+        if( flag == 1 )
+            return w.number
+        elsif( w.number == current )
+                flag = 1
+        end
+    end
+    # This is the largest workspace
+    return -1
+end
+
+def get_prev_largest_workspace()
+    workspaces = get_workspaces()
+    current = get_current_workspace_num()
+    flag = 0
+    workspaces.each do | w |
+        if( w.number == current )
+            return flag
+        end
+        flag = w.number    
+    end
+    # This is the smallest workspace
+    return -1
+end
+
+
+def get_current_workspace_num()
+    workspaces = get_workspaces()
+    current = -1
+    workspaces.each do | w |
+        if( w.visible == true )
+            current = w.number
+            break
+        end
+    end
+    return current
+end
+
+
+def workspace_exists( ws )
+    workspaces = get_workspaces()
+    workspaces.each do | w |
+        if( ws == w.number )
+            return true
+        end
+    end
+    return false
+end
+
+
+# Generate a new workspace and switch to it
+# If that workspace already exists, make a new one right after it
+def gen_next_free_workspace()
+    workspaces = get_workspaces()
+    # If this is the only workspace, we want to maximize the distance 
+    # this one and the next. This workspace now is the root of switching
+    new_ws = 0
+    if( workspaces.length() == 1 )
+        if( get_current_workspace_num() == $max_ws )
+           new_ws = 0
+        else
+           new_ws = $max_ws
+        end 
+    elsif
+        next_largest = get_next_largest_workspace()
+        if( next_largest == -1 )
+            next_largest = $max_ws
+        end
+        if( get_current_workspace_num() == ( next_largest - 1 ) )
+            return
+        end
+        dist_to_half = ( next_largest - get_current_workspace_num() ) / 2
+        new_ws = get_current_workspace_num() + dist_to_half
+        
+        # Prevent deadlock
+        dl_flag = -1
+        while workspace_exists( new_ws ) or new_ws == get_current_workspace_num()
+            if( dl_flag == new_ws )
+                break
+            end
+            dl_flag = new_ws
+            if( new_ws + 1 < next_largest )
+                new_ws = new_ws + 1
+            end
+        end
+    end
+    return new_ws
+end    
+        
+
+# Generate a new workspace and switch to it
+# If that workspace already exists, make a new one right after it
+def gen_prev_free_workspace()
+    workspaces = get_workspaces()
+    # If this is the only workspace, we want to maximize the distance 
+    # this one and the next. This workspace now is the root of switching
+    new_ws = 0
+    if( workspaces.length() == 1 )
+        if( get_current_workspace_num() == 0 )
+           new_ws = $max_ws
+        else
+           new_ws = 0
+        end 
+    elsif
+        prev_largest = get_prev_largest_workspace() 
+        if( prev_largest == -1 )
+            prev_largest = 0
+        end
+        if( get_current_workspace_num() == ( prev_largest + 1 ) )
+            return
+        end
+        dist_to_half = ( get_current_workspace_num() - prev_largest ) / 2
+        new_ws = get_current_workspace_num() - dist_to_half
+        while workspace_exists( new_ws ) 
+            
+            if( new_ws - 1 > prev_largest )
+                new_ws = new_ws - 1
+            end
+        end
+    end
+    return new_ws    
+end    
+
+
+options = {}
+optparse = OptionParser.new do|opts|
+    options[:pull] = false   
+    opts.on( '-p', '--pull', 'Pull the window with you when you shift workspaces' )  do     
+        options[:pull] = true   
+    end
+
+    options[:relative] = false   
+    opts.on( '-r', '--relative', 'Don\'t create a new workspace, only work with ones that exist' )  do     
+        options[:relative] = true   
+    end
+
+    options[:direction] = nil   
+    opts.on( '-d', '--direction (next|prev)', 'Move in direction specified' )  do |direction|     
+        options[:direction] = direction
+    end
+end
+optparse.parse!
+
+
+if( options[:direction] == 'prev' )
+    if( options[:relative] )
+        if( options[:pull] )
+            %x{ i3-msg 'move to workspace prev' }
+        end
+        %x{ i3-msg 'workspace prev' }
+    else
+        prev_ws = gen_prev_free_workspace( )
+        if( options[:pull] )
+            i3_move_window_to_workspace( prev_ws )
+        end
+        i3_switch_to_workspace( prev_ws )
+    end
+elsif( options[:direction] == 'next' )
+    if( options[:relative] )
+        if( options[:pull] )
+            %x{ i3-msg 'move to workspace next' }
+        end
+        %x{ i3-msg 'workspace next' }
+    else
+        next_ws = gen_next_free_workspace
+        if( options[:pull] )
+            i3_move_window_to_workspace( next_ws )
+        end
+        i3_switch_to_workspace( next_ws )
+    end
+
+else
+    puts "Invalid direction"
+end
+        

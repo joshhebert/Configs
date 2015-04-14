@@ -1,0 +1,1 @@
+dmenu_run -b -nb "#101820" -nf "#FFFFFF" -sb "#3D7070" -sf "#FFFFFF" -fn "-*-profont-medium-*-normal-*-15-*-*-*-*-*-*-*" -l 15 -i
