@@ -51,9 +51,9 @@ export PATH=$PATH:/home/josh/.local/bin
 	alias '...'='cd ../..'
 	alias '....'='cd ../../..'
 	alias 'gping'='ping google.com'
-	alias 'l'='/usr/bin/ls --color=auto'
-	alias 'ls'='/usr/bin/ls --color=auto'
-	alias 'll'='/usr/bin/ls -Al --color=auto'
+	alias 'l'='ls --color=auto'
+	alias 'ls'='ls --color=auto'
+	alias 'll'='ls -Al --color=auto'
     alias 'synctime'='sudo ntpd -gq'
     alias 'tmux'='tmux -2'
 #Options
