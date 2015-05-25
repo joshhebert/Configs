@@ -63,10 +63,10 @@ bindsym Mod4+Right          focus right
 bindsym Mod4+Up             focus up
 bindsym Mod4+Down           focus down
 
-bindsym $mod+Mod4+Left     move left
-bindsym $mod+Mod4+Down     move down
-bindsym $mod+Mod4+Up       move up
-bindsym $mod+Mod4+Right    move right
+bindsym Control+Mod4+Left     move left
+bindsym Control+Mod4+Down     move down
+bindsym Control+Mod4+Up       move up
+bindsym Control+Mod4+Right    move right
 
 bindsym $mod+v split h
 bindsym $mod+c split v

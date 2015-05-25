@@ -117,7 +117,7 @@ def gen_next_free_workspace()
         if( get_current_workspace_num() == $max_ws )
            new_ws = 0
         else
-           new_ws = $max_ws
+           new_ws = $max_ws / 2
         end 
     elsif
         next_largest = get_next_largest_workspace()
@@ -155,7 +155,7 @@ def gen_prev_free_workspace()
     new_ws = 0
     if( workspaces.length() == 1 )
         if( get_current_workspace_num() == 0 )
-           new_ws = $max_ws
+           new_ws = $max_ws / 2
         else
            new_ws = 0
         end 

@@ -341,7 +341,10 @@ export PATH=$PATH:/home/josh/.local/bin
 
 # Quote 
 echo -n "\e[1;36m~\n\e[1;37m"
-fortune -eo -sn 300 portal portal2 archer firefly
+echo "I ask not for a lighter burden, but for broader shoulders.
+I ask not for an easier path, but for stronger feet.
+I ask not for weaker enemies, but a stronger me.
+Let life do with us what it wants, but let us be strong enough to handle it."
 echo -n "\e[1;36m~\n\e[1;37m"
 echo "\e[0m\n"
 

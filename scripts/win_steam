@@ -1,0 +1,1 @@
+WINEARCH=win32 primusrun wine /home/josh/.wine/drive_c/Program\ Files/Steam/Steam.exe -no-dwrite
