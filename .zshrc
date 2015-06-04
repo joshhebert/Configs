@@ -1,9 +1,10 @@
 # Set path
 if [ $USER = "root" ]; then
-    export PATH=$PATH:/root/.local/bin
+    HOME_DIR="/root"
 else
-    export PATH=$PATH:/home/$USER/.local/bin
+    HOME_DIR="/home/$USER"
 fi
+export PATH="$PATH:$HOME_DIR/.local/bin"
 # Autoloads
 	autoload -U compinit && compinit
 	autoload -Uz up-line-or-beginning-search
@@ -43,7 +44,7 @@ fi
 
     # This fucker requires some manual intervention
     # I should make a setup script that deals with this and vimproc
-    [ -s "/home/josh/.scm_breeze/scm_breeze.sh" ] && source "/home/josh/.scm_breeze/scm_breeze.sh"
+    [ -s "$HOME_DIR/.scm_breeze/scm_breeze.sh" ] && source "$HOME_DIR/.scm_breeze/scm_breeze.sh"
 
 # Colors for ls
     source ~/.local/bin/set_ls_colors.sh
@@ -350,4 +351,5 @@ I ask not for weaker enemies, but a stronger me.
 Let life do with us what it wants, but let us be strong enough to handle it."
 echo -n "\e[1;36m~\n\e[1;37m"
 echo "\e[0m\n"
+
 
