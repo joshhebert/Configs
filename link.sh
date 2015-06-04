@@ -25,4 +25,8 @@ rm -r .Xdefaults
 ln -s configs/.Xdefaults 	        .Xdefaults
 echo "Xdefaults linked..."
 
+rm -r .scm_breeze
+ln -s configs/scm_breeze            .scm_breeze
+echo "scm_breeze linked..."
+
 echo "done"
