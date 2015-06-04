@@ -1,6 +1,9 @@
 # Set path
-export PATH=$PATH:/home/josh/.local/bin
-
+if [ $USER = "root" ]; then
+    export PATH=$PATH:/root/.local/bin
+else
+    export PATH=$PATH:/home/$USER/.local/bin
+fi
 # Autoloads
 	autoload -U compinit && compinit
 	autoload -Uz up-line-or-beginning-search
