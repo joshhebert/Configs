@@ -25,6 +25,10 @@ rm -r .Xdefaults
 ln -s configs/.Xdefaults 	        .Xdefaults
 echo "Xdefaults linked..."
 
+rm -r .dir_colors
+ln -s configs/.dir_colors 	        .dir_colors
+echo "dir_colors linked..."
+
 rm -r .scm_breeze
 ln -s configs/scm_breeze            .scm_breeze
 echo "scm_breeze linked..."
