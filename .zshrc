@@ -47,7 +47,8 @@ export PATH="$PATH:$HOME_DIR/.local/bin"
     [ -s "$HOME_DIR/.scm_breeze/scm_breeze.sh" ] && source "$HOME_DIR/.scm_breeze/scm_breeze.sh"
 
 # Colors for ls
-    source ~/.local/bin/set_ls_colors.sh
+    eval $(dircolors ~/.dir_colors)    
+
 
 # Aliases
 	alias 'pacman'='packer-color'
