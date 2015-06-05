@@ -42,16 +42,21 @@ export PATH="$PATH:$HOME_DIR/.local/bin"
 
     antigen apply
 
-    # This fucker requires some manual intervention
-    # I should make a setup script that deals with this and vimproc
+    # Set up the scm_breeze install that I have to package with my repo because it isn't in antigen
+    # Ew
     [ -s "$HOME_DIR/.scm_breeze/scm_breeze.sh" ] && source "$HOME_DIR/.scm_breeze/scm_breeze.sh"
 
 # Colors for ls
     eval $(dircolors ~/.dir_colors)    
 
 
+DISTRO="arch"
+#DISTRO="debian"
+
+# Distro specific setup
+    source "$HOME_DIR/configs/dist/$DISTRO.profile"
+
 # Aliases
-	alias 'pacman'='packer-color'
 	alias '..'='cd ..'
 	alias '...'='cd ../..'
 	alias '....'='cd ../../..'
@@ -61,6 +66,7 @@ export PATH="$PATH:$HOME_DIR/.local/bin"
 	alias 'll'='ls -Al --color=auto'
     alias 'synctime'='sudo ntpd -gq'
     alias 'tmux'='tmux -2'
+
 #Options
 	setopt AUTO_CD
 	setopt MULTIOS

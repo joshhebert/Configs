@@ -1,0 +1,2 @@
+
+    alias 'pacman'='packer-color'
