@@ -3,7 +3,7 @@
 	call plug#begin('~/.vim/plugged')
 		" Clean up all that gross whitespace
 		Plug 'ntpeters/vim-better-whitespace'
-        
+
 		" Search on steroids
 		Plug 'Shougo/vimproc.vim'
 		Plug 'Shougo/unite.vim'
@@ -104,6 +104,7 @@
         let g:airline_powerline_fonts = 1
         set fillchars+=stl:\ ,stlnc:\
         set timeoutlen=5
+
 " User Config
 " ===========================================================================
 " Load filetype plugins
@@ -144,6 +145,9 @@ set smartcase
 
 "Fix backspace in insert mode to be sane
 set backspace=indent,eol,start"
+
+"Make it so left and right/h and l wrap
+set whichwrap+=<,>,h,l,[,]
 
 " English spellfile
 set spelllang=en
@@ -208,9 +212,6 @@ set uc=75
 " tab width
 set tabstop=4
 
-" do not behave like vi, vi is dead
-set nocompatible
-
 " use the modelines commands
 set modeline
 
@@ -219,10 +220,6 @@ set modelines=3
 
 " 256 colors
 set t_Co=256
-
-" Center the line when searching
-map n nzz
-map N Nzz
 
 " fix pasting so you dont get the step down effect
 nnoremap  :set invpaste paste?
@@ -269,8 +266,8 @@ nnoremap : ;
 map <C-t> ;tabnew<CR>
 
 " Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
+map j 5gj
+map k 5gk
 
 " Make vim panes usable with my tmux setup (and also more sane)
 nnoremap <C-h> <C-w><C-h>
