@@ -3,7 +3,7 @@
 	call plug#begin('~/.vim/plugged')
 		" Clean up all that gross whitespace
 		Plug 'ntpeters/vim-better-whitespace'
-
+        
 		" Search on steroids
 		Plug 'Shougo/vimproc.vim'
 		Plug 'Shougo/unite.vim'
@@ -12,8 +12,8 @@
 		Plug 'airblade/vim-gitgutter'
 		Plug 'tpope/vim-fugitive'
 
-		" yeah boi, tab completion
-		Plug 'ervandew/supertab'
+		" Better autocompletion
+        Plug 'Valloric/YouCompleteMe'
 
 		" Tagbar
 		Plug 'majutsushi/tagbar'
@@ -23,6 +23,13 @@
 
         " Gotta look good
         Plug 'bling/vim-airline'
+
+        " Language specific improvement
+            " JS/Angular
+            Plug 'pangloss/vim-javascript'
+            Plug 'othree/javascript-libraries-syntax.vim'
+            " Ruby
+            Plug 'vim-ruby/vim-ruby'
 
     call plug#end()
 
