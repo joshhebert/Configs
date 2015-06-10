@@ -54,9 +54,12 @@ DISTRO="arch"
 #DISTRO="debian"
 
 # Distro specific setup
-    source "$HOME_DIR/configs/dist/$DISTRO.profile"
+    source "$HOME_DIR/configs/dist/profile/$DISTRO.profile"
 
-# Aliases
+# Source profiles for packages, but only if they exist
+    for i ($HOME_DIR/configs/packages/*.profile(D)) source $i
+
+# Generic aliases that will work on virtually any machine
 	alias '..'='cd ..'
 	alias '...'='cd ../..'
 	alias '....'='cd ../../..'
@@ -64,8 +67,6 @@ DISTRO="arch"
 	alias 'l'='ls --color=auto'
 	alias 'ls'='ls --color=auto'
 	alias 'll'='ls -Al --color=auto'
-    alias 'synctime'='sudo ntpd -gq'
-    alias 'tmux'='tmux -2'
 
 #Options
 	setopt AUTO_CD
