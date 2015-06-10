@@ -15,9 +15,6 @@
 		" Better autocompletion
         Plug 'Valloric/YouCompleteMe'
 
-		" Tagbar
-		Plug 'majutsushi/tagbar'
-
         " Easy motion OP
         Plug 'Lokaltog/vim-easymotion'
 
@@ -60,9 +57,6 @@
 	" git-gutter
 		highlight clear SignColumn
 		let g:gitgutter_realtime = 1
-
-	" tagbar
-		noremap <F8> :TagbarToggle<CR>
 
     " easymotion
         " I really just use easymotion to replace
@@ -248,11 +242,11 @@ set pumheight=7
 " Mappings
 " ===========================================================================
 
-" force using hjkl
-noremap <Up>       :echoerr "Arrow keys disabled in command mode"<CR>$,
-noremap <Down>     :echoerr "Arrow keys disabled in command mode"<CR>$,
-noremap <Left>     :echoerr "Arrow keys disabled in command mode"<CR>$,
-noremap <Right>    :echoerr "Arrow keys disabled in command mode"<CR>$,
+" hjkl for course, arrow keys for fine
+noremap <Up>       k 
+noremap <Down>     j
+noremap <Left>     h
+noremap <Right>    l
 
 " Swap the two weird apostrophe things
 nnoremap ' `
