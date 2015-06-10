@@ -5,5 +5,4 @@ CMD="ntpd"
 if [ $( which $CMD ) != "$CMD not found" > /dev/null 2>&1 ]; then 
     # If all is well, set up aliases
     alias 'synctime'='sudo ntpd -gq'
-    echo "ntpd configured"
 fi
