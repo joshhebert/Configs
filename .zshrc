@@ -4,7 +4,10 @@ if [ $USER = "root" ]; then
 else
     HOME_DIR="/home/$USER"
 fi
+
+# Use the scripts pulled as part of this repo in my path
 export PATH="$PATH:$HOME_DIR/.local/bin"
+
 # Autoloads
 	autoload -U compinit && compinit
 	autoload -Uz up-line-or-beginning-search

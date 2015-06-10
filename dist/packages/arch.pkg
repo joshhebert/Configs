@@ -3,7 +3,10 @@ pacman --noconfirm -S \
 curl dmenu git gvim ranger \
 sshfs sudo the_silver_searcher \
 tmux wget zsh makepkg base-devel \
-jshon
+jshon pkgfile
+
+# Set up pkgfile 
+pkgfile -u
 
 # Build packer-color
     cd /tmp
