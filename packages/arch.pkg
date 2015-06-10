@@ -10,7 +10,7 @@ jshon
     wget https://aur.archlinux.org/packages/pa/packer-color/packer-color.tar.gz
     tar -xzf packer-color.tar.gz
 
-    # This is... not great-- bear with me
+    # This is... not great; bear with me
     useradd -G users tmp
     chown -R tmp:users packer-color
     cd packer-color
