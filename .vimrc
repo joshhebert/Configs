@@ -241,13 +241,6 @@ set pumheight=7
 
 " Mappings
 " ===========================================================================
-
-" hjkl for course, arrow keys for fine
-noremap <Up>       k 
-noremap <Down>     j
-noremap <Left>     h
-noremap <Right>    l
-
 " Swap the two weird apostrophe things
 nnoremap ' `
 nnoremap ` '
