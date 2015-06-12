@@ -12,16 +12,16 @@ Setting it all up
        In order to put my configs in the correct place, as well as make it
        easy to update across my devices, link.sh will place symbolic links in
        the home folder to this folder. Run that and let it do its thing
-    3. Zsh 
+    3. Zsh
        Load up zsh. Antigen should install all of the zsh plugins I use.
        Pretty easy
     4. Vim
-       Load up Vim and run :PlugInstall. This will pull down all the Vim 
-       plugins/conf I use. 
+       Load up Vim and run :PlugInstall. This will pull down all the Vim
+       plugins/conf I use.
        But wait! There's more!
-       In ./.vim/plugged, there's work to be done. 
+       In ./.vim/plugged, there's work to be done.
         - In vimproc.vim, run "make"
         - In YouCompleteMe, run "./install.sh --clang-completer"
 
-Everything should now be set 
-      
+Everything should now be set
+
