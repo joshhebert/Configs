@@ -20,18 +20,18 @@ export PATH="$PATH:$HOME_DIR/.local/bin"
 	export EDITOR=/usr/bin/vim
 
 
-# Plugin loading	
-	
+# Plugin loading
+
     # Use antigen for what we can
 	source ~/.zsh/antigen/antigen.zsh
         antigen use oh-my-zsh
-        
+
         # Be more like fish
         antigen bundle zsh-users/zsh-syntax-highlighting
-        
+
         # Tell me where to get what I need
         antigen bundle zsh-users/zsh-completions src
-        
+
         # Better directory traversal
         antigen bundle rupa/z
             add-zsh-hook precmd _z_precmd
@@ -50,7 +50,7 @@ export PATH="$PATH:$HOME_DIR/.local/bin"
     [ -s "$HOME_DIR/.scm_breeze/scm_breeze.sh" ] && source "$HOME_DIR/.scm_breeze/scm_breeze.sh"
 
 # Colors for ls
-    eval $(dircolors ~/.dir_colors)    
+    eval $(dircolors ~/.dir_colors)
 
 
 DISTRO="arch"
@@ -141,7 +141,7 @@ DISTRO="arch"
 
 	# Killer: share history between multiple shells
 	setopt SHARE_HISTORY
-   
+
 	# If I type cd and then cd again, only save the last one
 	setopt HIST_IGNORE_DUPS
 
@@ -160,7 +160,7 @@ DISTRO="arch"
 
 	# Save the time and how long a command ran
 	setopt EXTENDED_HISTORY
-	
+
 	# Misc
 	setopt HIST_SAVE_NO_DUPS
 	setopt HIST_EXPIRE_DUPS_FIRST
@@ -198,7 +198,7 @@ DISTRO="arch"
     git_deletions() {
         git diff --stat | tail -n 1 | cut -d',' -f3 | sed 's/[^0-9]*//g'
     }
-    
+
     # Git state
     git_state(){
         local GIT_STATE
@@ -206,21 +206,21 @@ DISTRO="arch"
         if [ -n $GIT_DIR ] && test -r $GIT_DIR/MERGE_HEAD; then
             GIT_STATE=$GIT_STATE"merging"
         fi
-                     
+
         if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
             if [[ ! -z "$GIT_STATE" ]]; then
                 GIT_STATE=$GIT_STATE":"
             fi
             GIT_STATE=$GIT_STATE"untracked"
         fi
-                                 
+
         if ! git diff --quiet 2> /dev/null; then
             if [[ ! -z "$GIT_STATE" ]]; then
                 GIT_STATE=$GIT_STATE":"
             fi
             GIT_STATE=$GIT_STATE"modified"
         fi
-                                             
+
         if ! git diff --cached --quiet 2> /dev/null; then
             if [[ ! -z "$GIT_STATE" ]]; then
                 GIT_STATE=$GIT_STATE":"
@@ -229,7 +229,7 @@ DISTRO="arch"
         fi
 
         echo -n "$GIT_STATE"
-    }                                     
+    }
 
     # Returns the git prompt if we're in a git repo. Otherwise, don't return anything
     git_prompt(){
@@ -238,15 +238,15 @@ DISTRO="arch"
         then
             # This is a git dir
             echo -n " "
-           
-            
+
+
             # Branch + ahead/behind
             echo -n "%{$fg[white]%}("
             local GIT_DIR="$(git rev-parse --git-dir 2> /dev/null)"
             if [ -n $GIT_DIR ] && test -r $GIT_DIR/MERGE_HEAD; then
-                echo -n "%{$fg[magenta]%}<merging> " 
+                echo -n "%{$fg[magenta]%}<merging> "
             fi
-            
+
             echo -n "%{$fg[white]%}"
             echo -n "$(git_branch)"
             local gca=$(git_commits_ahead)
@@ -262,12 +262,11 @@ DISTRO="arch"
             fi
             echo -n "%{$fg[white]%})"
 
-            
             # Additions/Deletions
             echo -n "%{$fg[white]%}(%{$fg_bold[green]%}+"
             local ga=$(git_additions)
             if [[ ! -z "$ga" ]]
-                then 
+                then
                     echo -n "$ga"
                 else
                     echo -n "0"
@@ -351,10 +350,13 @@ DISTRO="arch"
 
 # PS1 Setup
 	# Left prompt (WIP)
+    PROMPT='%{$fg[white]%}[${PWD/#$HOME/~}]$(git_prompt)%{$reset_color%} >> '
+    # Right prompt
+    # All I want to know is if the command I just ran didn't work
+    # In that case, I want the error code
     RPROMPT='%{$fg[red]%} %(?,,%?)'
-    PROMPT='%{$fg[white]%}[${PWD/#$HOME/~}]$(git_prompt)%{$reset_color%} >> ' 
 
-# Quote 
+# Quote
 echo -n "\e[1;36m~\n\e[1;37m"
 echo "I ask not for a lighter burden, but for broader shoulders.
 I ask not for an easier path, but for stronger feet.
