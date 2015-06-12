@@ -15,6 +15,9 @@
 		" Better autocompletion
         Plug 'Valloric/YouCompleteMe'
 
+        " Why does nobody know these are a thing?
+        Plug 'mbbill/undotree'
+
         " Easy motion OP
         Plug 'Lokaltog/vim-easymotion'
 
@@ -33,7 +36,7 @@
 " Plugin Configuration
 " ===========================================================================
 	" vim-better-whitespace
-		let g:better_whitespace_enabled=0
+		let g:better_whitespace_enabled=1
 
 		" Toggle Whitespace
 		noremap <C-e> :ToggleWhitespace<cr>
@@ -51,12 +54,14 @@
 		noremap <space><space> :<C-u>Unite -start-insert file_rec/async<cr>
 		noremap <space>r <Plug>(unite_restart)
 
-	" vim-easy-align
-		vnoremap <silent> <Enter> :EasyAlign<cr>
 
 	" git-gutter
 		highlight clear SignColumn
 		let g:gitgutter_realtime = 1
+
+    " UndoTree
+        " Open UndoTree and switch focus to it
+        nnoremap <C-u> :UndotreeToggle<cr><C-w>w
 
     " easymotion
         " I really just use easymotion to replace
@@ -75,19 +80,10 @@
 
         " Bi-directional find motion
         " Jump to anywhere you want with minimal keystrokes, with just one key binding.
-        " `s{char}{label}`
-        nmap s <Plug>(easymotion-s)
-        " or
-        " `s{char}{char}{label}`
-        " Need one more keystroke, but on average, it may be more comfortable.
         nmap s <Plug>(easymotion-s2)
 
         " Turn on case insensitive feature
         let g:EasyMotion_smartcase = 1
-
-        " JK motions: Line motions
-        map <Leader>j <Plug>(easymotion-j)
-        map <Leader>k <Plug>(easymotion-k)
 
     " airline
         " Set that theme
@@ -101,166 +97,178 @@
 
 " User Config
 " ===========================================================================
-" Load filetype plugins
-filetype plugin on
-filetype indent on
+    " Load filetype plugins
+    filetype plugin on
+    filetype indent on
 
-" Language Specific Settings
-" settings for the c language
-au FileType c,h           set ai sw=4 ts=4 noexpandtab cindent omnifunc=ccomplete#Complete
+    " Language Specific Settings
+    " settings for the c language
+    au FileType c,h           set ai sw=4 ts=4 noexpandtab cindent omnifunc=ccomplete#Complete
 
-" Needed for some plugins
-set nocp
+    " Needed for some plugins
+    set nocp
 
-" My terminal is fast
-set ttyfast
+    " My terminal is fast
+    set ttyfast
 
-" Set to auto read when a file is changed from the outside
-set autoread
+    " Set to auto read when a file is changed from the outside
+    set autoread
 
-" For regular expressions turn magic on
-set magic
+    " For regular expressions turn magic on
+    set magic
 
-" show the laststatus line always
-set laststatus=2
+    " show the laststatus line always
+    set laststatus=2
 
-" give cursor position
-set ruler
+    " give cursor position
+    set ruler
 
-" number of undos
-set undolevels=200
+    " number of undos
+    set undolevels=200
 
-" jump to the word you search during you type
-set incsearch
-set ignorecase
+    " jump to the word you search during you type
+    set incsearch
+    set ignorecase
 
-" Smartcase
-set smartcase
+    " Smartcase
+    set smartcase
 
-"Fix backspace in insert mode to be sane
-set backspace=indent,eol,start"
+    "Fix backspace in insert mode to be sane
+    set backspace=indent,eol,start"
 
-"Make it so left and right/h and l wrap
-set whichwrap+=<,>,h,l,[,]
+    "Make it so left and right/h and l wrap
+    set whichwrap+=<,>,h,l,[,]
 
-" English spellfile
-set spelllang=en
+    " English spellfile
+    set spelllang=en
 
-" highlight search results
-set hlsearch
+    " highlight search results
+    set hlsearch
 
-" fuck the beeps
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
+    " fuck the beeps
+    set noerrorbells
+    set novisualbell
+    set t_vb=
+    set tm=500
 
-" for hidden buffers
-set hidden
+    " for hidden buffers
+    set hidden
 
-" continue searching at top when hitting bottom
-set wrapscan
+    " continue searching at top when hitting bottom
+    set wrapscan
 
-" Continue searching at top when hitting bottom
-set wrapscan
-set smarttab
+    " Continue searching at top when hitting bottom
+    set wrapscan
+    set smarttab
 
-" show all changes
-set report=0
+    " show all changes
+    set report=0
 
-" highlight current line
-set cursorline
+    " highlight current line
+    set cursorline
 
-" Highlight matching parens
-set showmatch
-set matchpairs=(:),[:],{:},<:>
-set mat=2
+    " Highlight matching parens
+    set showmatch
+    set matchpairs=(:),[:],{:},<:>
+    set mat=2
 
-" All  things indenting and tab related
-set smartindent
-set smarttab
-set expandtab
-set softtabstop=4
-set shiftwidth=4
+    " All  things indenting and tab related
+    set smartindent
+    set smarttab
+    set expandtab
+    set softtabstop=4
+    set shiftwidth=4
 
-" Scrolling lock
-set scrolloff=100
+    " Scrolling lock (Try to keep the cursor in the center
+    " of the window, except neer the ends)
+    set scrolloff=100
 
-" fancy menu
-set wildmenu
-set wildmode=list:longest,full
+    " fancy menu
+    set wildmenu
+    set wildmode=list:longest,full
 
-" Put evrything that should be in tmp in tmp
-set backupdir=/tmp
-set directory=/tmp
+    " Put evrything that should be in tmp in tmp
+    set backupdir=/tmp
+    set directory=/tmp
 
-" display utf-8 chars
-set encoding=utf-8
+    " display utf-8 chars
+    set encoding=utf-8
 
-" enumerate Lines
-set nu
+    " enumerate Lines
+    set nu
 
-" after 75 characters write a swap file
-set uc=75
+    " after 75 characters write a swap file
+    set uc=75
 
-" tab width
-set tabstop=4
+    " tab width
+    set tabstop=4
 
-" use the modelines commands
-set modeline
+    " use the modelines commands
+    set modeline
 
-" use 3 lines for modelines
-set modelines=3
+    " use 3 lines for modelines
+    set modelines=3
 
-" 256 colors
-set t_Co=256
+    " 256 colors
+    set t_Co=256
 
-" fix pasting so you dont get the step down effect
-nnoremap  :set invpaste paste?
+    " fix pasting so you dont get the step down effect
+    nnoremap  :set invpaste paste?
 
-" Let's make vim panes not suck, shall we?
-set splitbelow
-set splitright
 
-" Sharing is caring (use system clipboard as primary buffer)
-" This allows us to yank between vim processes
-" Requires vim to be compiled with +xterm_clipboard
-set clipboard=unnamed
+    " Sharing is caring (use system clipboard as primary buffer)
+    " This allows us to yank between vim processes
+    " Requires vim to be compiled with +xterm_clipboard
+    " On archlinux, this can be done without compiling vim from source by
+    " installing gvim
+    set clipboard=unnamed
 
-" Syntax higlighting
+" Syntax Stuff
 " ===========================================================================
 
-" Needed for Syntax Highlighting and stuff
-filetype on
-filetype plugin on
-syntax enable
-set grepprg=grep\ -nH\ $*
+    " Needed for Syntax Highlighting and stuff
+    filetype on
+    filetype plugin on
+    syntax enable
+    set grepprg=grep\ -nH\ $*
 
-set pumheight=7
+    set pumheight=7
 
+    " Folding is cool
+    set foldmethod=syntax
+    " But not too much
+    set foldnestmax=1
 
 " Mappings
 " ===========================================================================
-" Swap the two weird apostrophe things
-nnoremap ' `
-nnoremap ` '
+    " Swap the two weird apostrophe things
+    nnoremap ' `
+    nnoremap ` '
 
-" Swap : and ; because #convenience
-nnoremap ; :
-nnoremap : ;
+    " Swap : and ; because #convenience
+    nnoremap ; :
+    nnoremap : ;
 
-" New tab with ctrl-t
-map <C-t> ;tabnew<CR>
+    " New tab with ctrl-t
+    map <C-t> ;tabnew<CR>
 
-" Treat long lines as break lines (useful when moving around in them)
-map j 5gj
-map k 5gk
+    " Switch panes with <C-Space>
+    " Vim is just dumb, interprets <C-Space> as
+    " <NUL>, so I have to use that instead
+    nnoremap <NUL> <C-w>w
 
-" Make vim panes usable with my tmux setup (and also more sane)
-nnoremap <C-h> <C-w><C-h>
-nnoremap <C-j> <C-w><C-j>
-nnoremap <C-k> <C-w><C-k>
-nnoremap <C-l> <C-w><C-l>
+    " Treat long lines as break lines (useful when moving around in them)
+    " Also, using jk for course motion and arrow keys for fine motion is nice
+    nnoremap <Up>   gk
+    nnoremap <Down> gj
+    map j 5gj
+    map k 5gk
+
+    " Make vim panes usable with my tmux setup (and also more sane)
+    nnoremap <C-h> <C-w><C-h>
+    nnoremap <C-j> <C-w><C-j>
+    nnoremap <C-k> <C-w><C-k>
+    nnoremap <C-l> <C-w><C-l>
 
 " This needs to be last to work (hell if I know why)
 " ===========================================================================

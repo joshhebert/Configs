@@ -2,10 +2,10 @@
 " Eyes are sober, this is the plan
 " I'm sitting in a car heading Neverland
 " Author: Magnus Woldrich <trapd00r@trapd00r.se>
-
+" Modified by Josh Hebert <jahebert@wpi.edu>
 set background=dark
 
-hi Normal           ctermfg=255 ctermbg=232 
+hi Normal           ctermfg=255 ctermbg=232
 
 hi Boolean          ctermfg=135
 hi Character        ctermfg=143
@@ -30,8 +30,8 @@ hi Exception        ctermfg=118             cterm=bold
 hi Float            ctermfg=135
 hi FoldColumn       ctermfg=067 ctermbg=233 cterm=none
 hi Folded           ctermfg=240 ctermbg=235 cterm=bold
-hi Function         ctermfg=197             
-hi Identifier       ctermfg=166             
+hi Function         ctermfg=197
+hi Identifier       ctermfg=166
 hi Ignore           ctermfg=244 ctermbg=232
 hi IncSearch        ctermfg=193 ctermbg=16
 
@@ -69,7 +69,7 @@ hi SpellCap         ctermfg=094 ctermbg=233 cterm=bold
 hi SpellRare        ctermfg=096 ctermbg=233 cterm=bold
 hi SpellLocal       ctermfg=124 ctermbg=233 cterm=bold
 
-hi Statement        ctermfg=228             cterm=bold 
+hi Statement        ctermfg=228             cterm=bold
 hi StatusLine       ctermfg=234 ctermbg=136
 hi StatusLineNC     ctermfg=234 ctermbg=100
 hi StorageClass     ctermfg=208
