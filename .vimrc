@@ -262,8 +262,15 @@
     " Also, using jk for course motion and arrow keys for fine motion is nice
     nnoremap <Up>   gk
     nnoremap <Down> gj
-    map j 5gj
-    map k 5gk
+    map j gj
+    map k gk
+
+    " I don't really like navigating with h/l
+    " If I'm already doing fine navigation, I'm using arrow keys
+    " So let's make them do something more useful
+    " Like handle folding
+    map h zc
+    map l zo
 
     " Make vim panes usable with my tmux setup (and also more sane)
     nnoremap <C-h> <C-w><C-h>
