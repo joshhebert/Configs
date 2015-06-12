@@ -62,6 +62,7 @@
     " UndoTree
         " Open UndoTree and switch focus to it
         nnoremap <C-u> :UndotreeToggle<cr><C-w>w
+        let g:undotree_DiffAutoOpen = 0
 
     " easymotion
         " I really just use easymotion to replace
