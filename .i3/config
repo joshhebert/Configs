@@ -39,12 +39,10 @@ bindsym $mod+Shift+r restart
 
 # screenshot
 bindsym --release Print exec scrot $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png
-bindsym --release Shift+Print exec scrot -s $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png
-
 
 # Navigation Controls
 #=====================================================
-
+# Relies on a ruby script I wrote called i3man
 bindsym $mod+Up             exec --no-startup-id i3man -d next
 bindsym $mod+Down           exec --no-startup-id i3man -d prev
 bindsym $mod+Left           exec --no-startup-id i3man -d prev --relative

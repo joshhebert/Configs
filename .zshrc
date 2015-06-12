@@ -69,7 +69,8 @@ DISTRO="arch"
 	alias 'gping'='ping google.com'
 	alias 'l'='ls --color=auto'
 	alias 'ls'='ls --color=auto'
-	alias 'll'='ls -Al --color=auto'
+	alias 'la'='ls -A --color=auto'
+    alias 'll'='ls -Al --color=auto'
 
 #Options
 	setopt AUTO_CD
@@ -153,7 +154,7 @@ DISTRO="arch"
 
 	# If a line starts with a space, don't save it.
 	setopt HIST_IGNORE_SPACE
-	setopt HIST_NO_STORE
+	#setopt HIST_NO_STORE
 
 	# When using a hist thing, make a newline show the change before executing it.
 	setopt HIST_VERIFY
