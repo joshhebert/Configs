@@ -278,6 +278,10 @@
     nnoremap <C-k> <C-w><C-k>
     nnoremap <C-l> <C-w><C-l>
 
+    " You want something fancy? This shows the syntax type of the element
+    " under the cursor. EZ themeing
+    map <F10> ;echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'. synIDattr(synID(line("."),col("."),0),"name") . "> lo<". synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 " This needs to be last to work (hell if I know why)
 " ===========================================================================
 set noshowmode
