@@ -33,6 +33,8 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
+bindsym F9 exec xdotool click 1
+
 # Manage config
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart

@@ -1,7 +1,0 @@
-#!/usr/bin/bash
-
-while read lidstate < '/proc/acpi/button/lid/LID0/state'
-do
-    [[ "$lidstate" = *closed* ]] && systemctl suspend -i
-    sleep 5
-done

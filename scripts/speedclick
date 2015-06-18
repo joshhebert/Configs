@@ -1,0 +1,5 @@
+# Click really fast
+while true; do
+    xdotool click 1
+    sleep .01
+done

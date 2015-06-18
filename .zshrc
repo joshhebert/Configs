@@ -5,8 +5,10 @@ else
     HOME_DIR="/home/$USER"
 fi
 
-# Use the scripts pulled as part of this repo in my path
-export PATH="$PATH:$HOME_DIR/.local/bin"
+# Use the scripts pulled as part of this repo in my path, as
+# well as scripts that are specific to each machine (not
+# included in the repo)
+export PATH="$PATH:$HOME_DIR/.local/lbin:$HOME_DIR/.local/gbin"
 
 # Autoloads
 	autoload -U compinit && compinit
