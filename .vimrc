@@ -36,7 +36,7 @@
 " Plugin Configuration
 " ===========================================================================
 	" vim-better-whitespace
-		let g:better_whitespace_enabled=1
+		let g:better_whitespace_enabled=0
 
 		" Toggle Whitespace
 		noremap <C-e> :ToggleWhitespace<cr>
@@ -239,7 +239,7 @@
     set foldmethod=syntax
     " But not too much
     set foldnestmax=1
-
+    set foldlevel=99
 " Mappings
 " ===========================================================================
     " Swap the two weird apostrophe things
