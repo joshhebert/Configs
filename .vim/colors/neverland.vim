@@ -98,3 +98,6 @@ hi NonText          ctermfg=232 ctermbg=232
 hi TabLine          ctermfg=100 ctermbg=232
 hi TabLineFill      ctermfg=232 ctermbg=232
 hi TabLineSel       ctermfg=220 ctermbg=234
+
+" Language Specific
+hi htmlH1           ctermfg=229             cterm=none
