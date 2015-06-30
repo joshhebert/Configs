@@ -3,7 +3,7 @@ require 'optparse'
 
 Workspace = Struct.new( "Workspace", :number, :name, :visible )
 #$max_ws = 20
-$max_ws = 121575219
+$max_ws = 500
 $min_ws = 0
 
 # External i3 calls
