@@ -73,6 +73,8 @@ DISTRO="arch"
 	alias 'ls'='ls --color=auto'
 	alias 'la'='ls -A --color=auto'
     alias 'll'='ls -Al --color=auto'
+    alias 'sudi'='sudo -i'
+
 
 #Options
 	setopt AUTO_CD
