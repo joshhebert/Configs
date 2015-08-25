@@ -38,6 +38,7 @@ bindsym F9 exec xdotool click 1
 # Manage config
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
+bindsym $mod+Shift+q exit
 
 # screenshot
 bindsym --release Print exec scrot $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png

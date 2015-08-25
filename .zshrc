@@ -363,10 +363,9 @@ DISTRO="arch"
 
 # Quote
 echo -n "\e[1;36m~\n\e[1;37m"
-echo "I ask not for a lighter burden, but for broader shoulders.
-I ask not for an easier path, but for stronger feet.
-I ask not for weaker enemies, but a stronger me.
-Let life do with us what it wants, but let us be strong enough to handle it."
+echo "Peace did not serve order; order served peace, and when order became godlike, sacrosanct,
+and inviolate, then the peace thus won became a prison, and those who sought their 
+freedom became enemies to order, and in the elimination of such enemies, peace was lost."
 echo -n "\e[1;36m~\n\e[1;37m"
 echo "\e[0m\n"
 
