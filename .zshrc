@@ -358,9 +358,9 @@ DISTRO="arch"
 # PS1 Setup
 	# Left prompt (WIP)
     if [[ $IS_ROOT = true ]]; then
-        PROMPT='%{$fg[white]%}[%{$fg[red]%}${PWD/#$HOME/~}%{$fg[white]%}]$(git_prompt)%{$reset_color%} >> '
+        PROMPT='%{$fg[white]%}[$HOST] [%{$fg[red]%}${PWD/#$HOME/~}%{$fg[white]%}]$(git_prompt)%{$reset_color%} >> '
     else
-        PROMPT='%{$fg[white]%}[${PWD/#$HOME/~}]$(git_prompt)%{$reset_color%} >> '
+        PROMPT='%{$fg[white]%}[$HOST] [${PWD/#$HOME/~}]$(git_prompt)%{$reset_color%} >> '
     fi
     # Right prompt
     # All I want to know is if the command I just ran didn't work
