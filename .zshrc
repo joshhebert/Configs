@@ -1,8 +1,10 @@
 # Set path
-if [ $USER = "root" ]; then
+if [[ $USER = "root" ]]; then
     HOME_DIR="/root"
+    IS_ROOT=true
 else
     HOME_DIR="/home/$USER"
+    IS_ROOT=false
 fi
 
 # Use the scripts pulled as part of this repo in my path, as
@@ -355,7 +357,11 @@ DISTRO="arch"
 
 # PS1 Setup
 	# Left prompt (WIP)
-    PROMPT='%{$fg[white]%}[${PWD/#$HOME/~}]$(git_prompt)%{$reset_color%} >> '
+    if [[ $IS_ROOT = true ]]; then
+        PROMPT='%{$fg[white]%}[%{$fg[red]%}${PWD/#$HOME/~}%{$fg[white]%}]$(git_prompt)%{$reset_color%} >> '
+    else
+        PROMPT='%{$fg[white]%}[${PWD/#$HOME/~}]$(git_prompt)%{$reset_color%} >> '
+    fi
     # Right prompt
     # All I want to know is if the command I just ran didn't work
     # In that case, I want the error code

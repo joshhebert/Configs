@@ -13,7 +13,8 @@
 		Plug 'tpope/vim-fugitive'
 
 		" Better autocompletion
-        Plug 'Valloric/YouCompleteMe'
+        " this doesn't work anymore, replace or fix
+        "Plug 'Valloric/YouCompleteMe'
 
         " Why does nobody know these are a thing?
         Plug 'mbbill/undotree'
