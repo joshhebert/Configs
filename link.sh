@@ -3,8 +3,7 @@ echo "Assuming config directory is ~/configs/..."
 
 rm -r .i3
 ln -s configs/.i3 		            .i3
-rm -r .i3blocks.conf
-ln -s configs/.i3/.i3blocks.conf    .i3blocks.conf
+ln -s configs/.i3/.i3blocks.conf    .i3/.i3blocks.conf
 echo "i3 config linked..."
 
 rm -r .vim .vimrc

@@ -19,7 +19,7 @@ new_window pixel
 # Hotkeys
 #=====================================================
 set $mod Mod1
-bindsym $mod+Return exec --no-startup-id urxvt
+bindsym $mod+Return exec --no-startup-id terminology
 bindsym $mod+x kill
 bindsym $mod+p exec --no-startup-id dmenu_custom
 bindsym $mod+l exec --no-startup-id i3lock --color 000000
@@ -27,13 +27,16 @@ bindsym $mod+l exec --no-startup-id i3lock --color 000000
 # Volume
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
-bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86AudioMute exec amixer -q set Master toggle 
 
 # Screen Brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 bindsym F9 exec xdotool click 1
+
+bindsym Mod1+Shift+space floating toggle
+floating_modifier Mod1
 
 # Manage config
 bindsym $mod+Shift+c reload
@@ -107,6 +110,8 @@ bindsym $mod+r mode "resize"
 
 # Appearance
 #=====================================================
+set $trueblack   #000000
+set $truewhite   #ffffff
 set $black       #2c2836
 set $darkblack   #73707e
 set $red         #bb7473
@@ -122,31 +127,31 @@ set $darkmagenta #cf96cf
 set $cyan        #9ac1d9
 set $darkcyan    #3d7070
 set $white       #aaaaaa
-set $darkgrey    #101820
+set $darkgrey    #4b4b4b
 set $darkwhite   #f1edfb
-font pango:Profont 15
-
+font pango:Hack 15px, Icons 10
 #                       BORDER      BACKGROUND  TEXT   INDICATOR
-client.focused          $black      $darkcyan   $white $cyan
-client.unfocused        $black      $cyan       $white $darkcyan
-client.focused_inactive $black      $darkgrey   $white $darkcyan
+client.focused          $black      $darkgrey   $white $darkwhite
+client.unfocused        $black      $darkwhite  $white $darkwhite
+client.focused_inactive $black      $trueblack  $white $darkwhite
 client.urgent           $black      $red        $white $red
 
 bar {
-        status_command i3blocks
-        position top
-        font profont 15
+
+        status_command i3blocks -c .i3/i3blocks.conf
+        position bottom
+        font pango:Hack 10, Icons 10
         strip_workspace_numbers yes
         colors {
                 statusline         $white
-                background         $darkgrey
-                separator          $cyan
+                background         $trueblack
+                separator          $darkgrey
 
 #                                  BORDER       BACKGROUND   TEXT
-                focused_workspace  $darkgrey    $darkcyan    $white
-                inactive_workspace $darkgrey    $darkgrey    $white
-                active_workspace   $darkgrey    $darkcyan    $white
-                urgent_workspace   $red         $red         $white
+                focused_workspace  $darkgrey    $trueblack    $white
+                inactive_workspace $trueblack   $trueblack    $white
+                active_workspace   $darkgrey    $darkwhite    $white
+                urgent_workspace   $red         $red          $white
         }
 }
 

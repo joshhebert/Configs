@@ -1,1 +1,1 @@
-dmenu_run -b -nb "#101820" -nf "#FFFFFF" -sb "#3D7070" -sf "#FFFFFF" -fn "-*-profont-medium-*-normal-*-15-*-*-*-*-*-*-*" -l 15 -i
+dmenu_run -nb "#000000" -nf "#FFFFFF" -sb "#4B4B4B" -sf "#FFFFFF" -fn "Hack-10" -l 15 -i -hist ~/.dmenu_history -p ">"

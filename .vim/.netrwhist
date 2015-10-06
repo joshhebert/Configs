@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/josh/.i3'
 let g:netrw_dirhist_2='/home/josh/.vim'
 let g:netrw_dirhist_3='/home/josh/Configs/.vim'
@@ -7,3 +7,5 @@ let g:netrw_dirhist_4='/home/josh/.vimperator'
 let g:netrw_dirhist_5='/home/josh/.vim'
 let g:netrw_dirhist_6='/root/configs/.zsh'
 let g:netrw_dirhist_7='/root/configs/.vim'
+let g:netrw_dirhist_8='/home/josh/.tor'
+let g:netrw_dirhist_9='/home/josh/.local/gbin'
