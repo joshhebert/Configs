@@ -14,7 +14,7 @@
 
 		" Better autocompletion
         " this doesn't work anymore, replace or fix
-        "Plug 'Valloric/YouCompleteMe'
+        Plug 'Valloric/YouCompleteMe'
 
         " Why does nobody know these are a thing?
         Plug 'mbbill/undotree'
