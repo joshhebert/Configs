@@ -55,7 +55,8 @@ export PATH="$PATH:$HOME_DIR/.local/lbin:$HOME_DIR/.local/gbin"
 
 # Colors for ls
     eval $(dircolors ~/.dir_colors)
-
+# Get rid of the disgusting default dark blue when globbing with zsh-syntax-highlighting
+    ZSH_HIGHLIGHT_STYLES[globbing]=fg=063
 
 DISTRO="arch"
 #DISTRO="debian"
@@ -76,7 +77,7 @@ DISTRO="arch"
 	alias 'la'='ls -A --color=auto'
     alias 'll'='ls -Al --color=auto'
     alias 'sudi'='sudo -i'
-
+    alias 'junit'='java -cp .:/usr/share/java/junit.jar org.junit.runner.JUnitCore'
 
 #Options
 	setopt AUTO_CD

@@ -9,6 +9,8 @@ workspace_auto_back_and_forth yes
 force_display_urgency_hint 0 ms
 focus_on_window_activation urgent
 
+hide_edge_borders none
+
 # fix graphics glitch
 new_window pixel
 
@@ -19,7 +21,7 @@ new_window pixel
 # Hotkeys
 #=====================================================
 set $mod Mod1
-bindsym $mod+Return exec --no-startup-id terminology
+bindsym $mod+Return exec --no-startup-id evilvte
 bindsym $mod+x kill
 bindsym $mod+p exec --no-startup-id dmenu_custom
 bindsym $mod+l exec --no-startup-id i3lock --color 000000
@@ -140,6 +142,7 @@ bar {
 
         status_command i3blocks -c .i3/i3blocks.conf
         position bottom
+        separator_symbol "/"
         font pango:Hack 10, Icons 10
         strip_workspace_numbers yes
         colors {

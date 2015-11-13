@@ -16,7 +16,17 @@ no-dnd-shadow = true;
 inactive-dim = 0.4;
 inactive-opacity = 0.5; 
 active-opacity = 0.8;
-opacity-rule = ["99:class_g = 'dota2'", "99:class_g = 'RogueCastle.bin.x86_64'"];
+opacity-rule = [
+    # Games
+    "99:class_g = 'dota2'", 
+    "99:class_g = 'RogueCastle.bin.x86_64'", 
+    "99:class_g = 'Borderlands2'",
+    "99:class_g = 'Terraria.bin.x86'",
+    "99:class_g = 'Civ5XP'",
+    # Media
+    "99:class_g = 'MPlayer'",
+    "99:class_g = 'Viewnior'"
+];
 
 # Fading
 fading = true;

@@ -32,7 +32,12 @@
             " Ruby
             Plug 'vim-ruby/vim-ruby'
 
-    call plug#end()
+            " Gradle
+            Plug 'tfnico/vim-gradle'
+            
+            " HTML
+            Plug 'vim-scripts/HTML-AutoCloseTag'
+        call plug#end()
 
 " Plugin Configuration
 " ===========================================================================
@@ -40,9 +45,9 @@
 		let g:better_whitespace_enabled=0
 
 		" Toggle Whitespace
-		noremap <C-e> :ToggleWhitespace<cr>
+		noremap <C-E> :ToggleWhitespace<cr>
 		" Clean Whitesace
-		noremap <C-w> :StripWhitespace<cr>
+		noremap <C-e> :StripWhitespace<cr>
 
 	" unite
 		let g:unite_source_history_yank_enable = 1
