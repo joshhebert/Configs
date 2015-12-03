@@ -12,6 +12,11 @@
         " Make sure you use single quotes
         Plug 'Valloric/YouCompleteMe', { 'do': 'python2.7 ./install.py' }
 
+        Plug 'tpope/vim-surround'
+
+        " Simple closing of parens and quotes and stuff
+        Plug 'Townk/vim-autoclose'
+
         " Why does nobody know these are a thing?
         Plug 'mbbill/undotree'
 
@@ -96,9 +101,8 @@
 		noremap <C-E> :ToggleWhitespace<cr>
 		" Clean Whitesace
 		noremap <C-e> :StripWhitespace<cr>
-
-
-	" git-gutter
+	
+    " git-gutter
 		highlight clear SignColumn
 		let g:gitgutter_realtime = 1
 
