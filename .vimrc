@@ -4,17 +4,13 @@
 		" Clean up all that gross whitespace
 		Plug 'ntpeters/vim-better-whitespace'
 
-		" Search on steroids
-		Plug 'Shougo/vimproc.vim'
-		Plug 'Shougo/unite.vim'
-
 		" Git Plugins
 		Plug 'airblade/vim-gitgutter'
 		Plug 'tpope/vim-fugitive'
 
 		" Better autocompletion
-        " this doesn't work anymore, replace or fix
-        Plug 'Valloric/YouCompleteMe'
+        " Make sure you use single quotes
+        Plug 'Valloric/YouCompleteMe', { 'do': 'python2.7 ./install.py' }
 
         " Why does nobody know these are a thing?
         Plug 'mbbill/undotree'
@@ -27,17 +23,69 @@
 
         " Language specific improvement
             " JS/Angular
-            Plug 'pangloss/vim-javascript'
+            Plug 'jelera/vim-javascript-syntax'
             Plug 'othree/javascript-libraries-syntax.vim'
+
             " Ruby
             Plug 'vim-ruby/vim-ruby'
 
             " Gradle
             Plug 'tfnico/vim-gradle'
-            
-            " HTML
-            Plug 'vim-scripts/HTML-AutoCloseTag'
         call plug#end()
+
+
+" Set up NetRw to actually be useful
+" ===========================================================================
+    fun! VexToggle(dir)
+      if exists("t:vex_buf_nr")
+        call VexClose()
+      else
+        call VexOpen(a:dir)
+      endif
+    endf
+
+    fun! VexOpen(dir)
+      let g:netrw_browse_split=4
+      let vex_width = 27
+      exe "Vexplore " . a:dir
+      let t:vex_buf_nr = bufnr("%")
+      wincmd H
+
+      call VexSize(vex_width)
+    endf
+
+    fun! VexClose()
+      let cur_win_nr = winnr()
+      let target_nr = ( cur_win_nr == 1 ? winnr("#") : cur_win_nr )
+
+      1wincmd w
+      close
+      unlet t:vex_buf_nr
+
+      exe (target_nr - 1) . "wincmd w"
+      call NormalizeWidths()
+    endf
+
+    fun! VexSize(vex_width)
+      exe "vertical resize" . a:vex_width
+      set winfixwidth
+      call NormalizeWidths()
+    endf
+
+    fun! NormalizeWidths()
+      let eadir_pref = &eadirection
+      set eadirection=hor
+      set equalalways! equalalways!
+      let &eadirection = eadir_pref
+    endf
+
+    let g:netrw_liststyle=0         " thin (change to 3 for tree)
+    let g:netrw_banner=0            " no banner
+    let g:netrw_altv=1              " open files on right
+    let g:netrw_preview=1           " open previews vertically
+
+    " Bind it
+    noremap <space><space> :<C-u>call VexToggle("")<cr>
 
 " Plugin Configuration
 " ===========================================================================
@@ -49,17 +97,6 @@
 		" Clean Whitesace
 		noremap <C-e> :StripWhitespace<cr>
 
-	" unite
-		let g:unite_source_history_yank_enable = 1
-		try
-			let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
-			call unite#filters#matcher_default#use(['matcher_fuzzy'])
-		catch
-		endtry
-		" search a file in the filetree
-		noremap <space><space> :<C-u>Unite -start-insert file_rec/async<cr>
-		noremap <space>r <Plug>(unite_restart)
-
 
 	" git-gutter
 		highlight clear SignColumn
@@ -69,6 +106,7 @@
         " Open UndoTree and switch focus to it
         nnoremap <C-u> :UndotreeToggle<cr><C-w>w
         let g:undotree_DiffAutoOpen = 0
+
 
     " easymotion
         " I really just use easymotion to replace
@@ -160,6 +198,8 @@
 
     " for hidden buffers
     set hidden
+
+    set nocompatible
 
     " continue searching at top when hitting bottom
     set wrapscan

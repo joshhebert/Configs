@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/josh/.config/systemd/user/sleep.target.wants'
-let g:netrw_dirhist_2='/home/josh/Documents/Academic/2102-SA/b15/Assignments/gradle'
-let g:netrw_dirhist_3='/home/josh/Documents/Academic/2102-SA/b15/Assignments/hw1/team_99_odchace_bstitus/Examples.java'
-let g:netrw_dirhist_4='/home/josh/.zsh'
-let g:netrw_dirhist_5='/home/josh/Documents/Academic/2102-SA/b15/Assignments/hw1/team_28_nakadejdechapani_echeng'
-let g:netrw_dirhist_6='/home/josh/Downloads/GFP-4241-node'

@@ -23,6 +23,7 @@ opacity-rule = [
     "99:class_g = 'Borderlands2'",
     "99:class_g = 'Terraria.bin.x86'",
     "99:class_g = 'Civ5XP'",
+    "99:class_g = 'witcher2'",
     # Media
     "99:class_g = 'MPlayer'",
     "99:class_g = 'Viewnior'"

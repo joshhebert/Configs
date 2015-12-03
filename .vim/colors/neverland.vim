@@ -100,5 +100,7 @@ hi TabLineFill      ctermfg=232 ctermbg=232
 hi TabLineSel       ctermfg=220 ctermbg=234
 
 " Language Specific
+" HTML
 hi htmlTitle        ctermfg=229             cterm=none
 hi htmlH1           ctermfg=229             cterm=none
+hi javaScriptFuncExp ctermfg=229            cterm=none
