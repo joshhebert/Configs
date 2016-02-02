@@ -78,7 +78,7 @@ DISTRO="arch"
     alias 'll'='ls -Al --color=auto'
     alias 'sudi'='sudo -i'
     alias 'junit'='java -cp .:/usr/share/java/junit.jar org.junit.runner.JUnitCore'
-
+    alias 'gpuoff'='sudo rmmod nvidia_modeset; sudo rmmod nvidia; sudo tee /proc/acpi/bbswitch <<< OFF'
 #Options
 	setopt AUTO_CD
 	setopt MULTIOS
@@ -359,21 +359,12 @@ DISTRO="arch"
 # PS1 Setup
 	# Left prompt (WIP)
     if [[ $IS_ROOT = true ]]; then
-        PROMPT='%{$fg[white]%}[$HOST] [%{$fg[red]%}${PWD/#$HOME/~}%{$fg[white]%}]$(git_prompt)%{$reset_color%} >> '
+        PROMPT='%{$fg[white]%}[$HOST] [%{$fg[red]%}${PWD/#$HOME/~}%{$fg[white]%}]$(git_prompt)%{$fg[red]%}  %{$reset_color%}'
     else
-        PROMPT='%{$fg[white]%}[$HOST] [${PWD/#$HOME/~}]$(git_prompt)%{$reset_color%} >> '
+        PROMPT='%{$fg[white]%}[$HOST] [${PWD/#$HOME/~}]$(git_prompt)%{$fg[red]%}  %{$reset_color%}'
     fi
     # Right prompt
     # All I want to know is if the command I just ran didn't work
     # In that case, I want the error code
     RPROMPT='%{$fg[red]%} %(?,,%?)'
-
-# Quote
-echo -n "\e[1;36m~\n\e[1;37m"
-echo "Peace did not serve order; order served peace, and when order became godlike, sacrosanct,
-and inviolate, then the peace thus won became a prison, and those who sought their 
-freedom became enemies to order, and in the elimination of such enemies, peace was lost."
-echo -n "\e[1;36m~\n\e[1;37m"
-echo "\e[0m\n"
-
 

@@ -14,8 +14,6 @@
 
         Plug 'tpope/vim-surround'
 
-        " Simple closing of parens and quotes and stuff
-        Plug 'Townk/vim-autoclose'
 
         " Why does nobody know these are a thing?
         Plug 'mbbill/undotree'
@@ -30,12 +28,15 @@
             " JS/Angular
             Plug 'jelera/vim-javascript-syntax'
             Plug 'othree/javascript-libraries-syntax.vim'
+            
+            " C
+            Plug 'justinmk/vim-syntax-extra'
 
+            " Crystal
+            Plug 'rhysd/vim-crystal'
+            
             " Ruby
             Plug 'vim-ruby/vim-ruby'
-
-            " Gradle
-            Plug 'tfnico/vim-gradle'
         call plug#end()
 
 
@@ -185,8 +186,6 @@
     "Fix backspace in insert mode to be sane
     set backspace=indent,eol,start"
 
-    "Make it so left and right/h and l wrap
-    set whichwrap+=<,>,h,l,[,]
 
     " English spellfile
     set spelllang=en
@@ -309,18 +308,9 @@
     nnoremap <NUL> <C-w>w
 
     " Treat long lines as break lines (useful when moving around in them)
-    " Also, using jk for course motion and arrow keys for fine motion is nice
-    nnoremap <Up>   gk
-    nnoremap <Down> gj
     map j gj
     map k gk
 
-    " I don't really like navigating with h/l
-    " If I'm already doing fine navigation, I'm using arrow keys
-    " So let's make them do something more useful
-    " Like handle folding
-    map h zc
-    map l zo
 
     " Make vim panes usable with my tmux setup (and also more sane)
     nnoremap <C-h> <C-w><C-h>
@@ -331,6 +321,9 @@
     " You want something fancy? This shows the syntax type of the element
     " under the cursor. EZ themeing
     map <F10> ;echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'. synIDattr(synID(line("."),col("."),0),"name") . "> lo<". synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+    "Make it so left and right/h and l wrap
+    set whichwrap+=<,>,h,l,[,]
 
 " This needs to be last to work (hell if I know why)
 " ===========================================================================
