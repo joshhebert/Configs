@@ -54,7 +54,11 @@ export PATH="$PATH:$HOME_DIR/.local/lbin:$HOME_DIR/.local/gbin"
     [ -s "$HOME_DIR/.scm_breeze/scm_breeze.sh" ] && source "$HOME_DIR/.scm_breeze/scm_breeze.sh"
 
 # Colors for ls
-    eval $(dircolors ~/.dir_colors)
+    # Check if we have dircolors
+    which dircolors > /dev/null
+    if [[ $? == 0 ]]; then
+        eval $(dircolors ~/.dir_colors)
+    fi
 # Get rid of the disgusting default dark blue when globbing with zsh-syntax-highlighting
     ZSH_HIGHLIGHT_STYLES[globbing]=fg=063
 
