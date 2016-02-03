@@ -23,7 +23,7 @@
 
         " Gotta look good
         Plug 'bling/vim-airline'
-
+        Plug 'vim-airline/vim-airline-themes'
         " Language specific improvement
             " JS/Angular
             Plug 'jelera/vim-javascript-syntax'
