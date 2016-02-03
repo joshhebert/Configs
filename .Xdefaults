@@ -2,8 +2,6 @@
 ! solarized colors 
 !------------------------
 
-*background: #202020
-*foreground: #ffffff
 *font: xft:Hack:pixelsize=12
 
 *cursorColor: #93a1a1
