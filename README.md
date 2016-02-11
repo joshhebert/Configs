@@ -18,10 +18,6 @@ Setting it all up
     4. Vim
        Load up Vim and run :PlugInstall. This will pull down all the Vim
        plugins/conf I use.
-       But wait! There's more!
-       In ./.vim/plugged, there's work to be done.
-        - In vimproc.vim, run "make"
-        - In YouCompleteMe, run "./install.sh --clang-completer"
 
 Everything should now be set
 
