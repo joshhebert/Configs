@@ -73,7 +73,7 @@ export PATH="$PATH:$HOME_DIR/.local/lbin:$HOME_DIR/.local/gbin"
 	alias 'la'='ls -A --color=auto'
     alias 'll'='ls -Al --color=auto'
     alias 'sudi'='sudo -i'
-    alias 'junit'='java -cp .:/usr/share/java/junit.jar org.junit.runner.JUnitCore'
+    alias 'gps'='git push'
     alias 'gpuoff'='sudo rmmod nvidia_modeset; sudo rmmod nvidia; sudo tee /proc/acpi/bbswitch <<< OFF'
 #Options
 	setopt AUTO_CD
