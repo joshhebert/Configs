@@ -48,10 +48,9 @@ export PATH="$PATH:$HOME_DIR/.local/lbin:$HOME_DIR/.local/gbin"
         antigen bundle command-not-found
 
     antigen apply
-
-    # Set up the scm_breeze install that I have to package with my repo because it isn't in antigen
-    # Ew
-    [ -s "$HOME_DIR/.scm_breeze/scm_breeze.sh" ] && source "$HOME_DIR/.scm_breeze/scm_breeze.sh"
+    
+    # Please for the love of god have scmpuff
+    eval "$(scmpuff init -s)"
 
 # Colors for ls
     # Check if we have dircolors
@@ -62,14 +61,7 @@ export PATH="$PATH:$HOME_DIR/.local/lbin:$HOME_DIR/.local/gbin"
 # Get rid of the disgusting default dark blue when globbing with zsh-syntax-highlighting
     ZSH_HIGHLIGHT_STYLES[globbing]=fg=063
 
-DISTRO="arch"
-#DISTRO="debian"
 
-# Distro specific setup
-    source "$HOME_DIR/configs/dist/profile/$DISTRO.profile"
-
-# Source profiles for packages, but only if they exist
-    for i ($HOME_DIR/configs/packages/*.profile(D)) source $i
 
 # Generic aliases that will work on virtually any machine
 	alias '..'='cd ..'
