@@ -77,6 +77,7 @@ export PATH="$PATH:$HOME_DIR/.local/lbin:$HOME_DIR/.local/gbin"
     alias 'gpl'='git pull'
     alias 'gc'='git commit'
     alias 'gpuoff'='sudo rmmod nvidia_modeset; sudo rmmod nvidia; sudo tee /proc/acpi/bbswitch <<< OFF'
+    alias 'share'='python2 -m SimpleHTTPServer'
 #Options
 	setopt AUTO_CD
 	setopt MULTIOS

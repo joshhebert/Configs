@@ -1,5 +1,5 @@
 " Plugins
-" ===========================================================================
+" =================================================================================
 	call plug#begin('~/.vim/plugged')
 		" Clean up all that gross whitespace
 		Plug 'ntpeters/vim-better-whitespace'
@@ -14,7 +14,6 @@
 
         Plug 'tpope/vim-surround'
 
-
         " Why does nobody know these are a thing?
         Plug 'mbbill/undotree'
 
@@ -28,13 +27,13 @@
             " JS/Angular
             Plug 'jelera/vim-javascript-syntax'
             Plug 'othree/javascript-libraries-syntax.vim'
-            
+
             " C
             Plug 'justinmk/vim-syntax-extra'
 
             " Crystal
             Plug 'rhysd/vim-crystal'
-            
+
             " Ruby
             Plug 'vim-ruby/vim-ruby'
         call plug#end()
@@ -52,7 +51,7 @@
 
     fun! VexOpen(dir)
       let g:netrw_browse_split=4
-      let vex_width = 27
+      let vex_width = 40
       exe "Vexplore " . a:dir
       let t:vex_buf_nr = bufnr("%")
       wincmd H
@@ -85,7 +84,7 @@
       let &eadirection = eadir_pref
     endf
 
-    let g:netrw_liststyle=0         " thin (change to 3 for tree)
+    let g:netrw_liststyle=3         " thin (change to 3 for tree)
     let g:netrw_banner=0            " no banner
     let g:netrw_altv=1              " open files on right
     let g:netrw_preview=1           " open previews vertically
@@ -96,13 +95,13 @@
 " Plugin Configuration
 " ===========================================================================
 	" vim-better-whitespace
-		let g:better_whitespace_enabled=0
+		let g:better_whitespace_enabled=1
 
 		" Toggle Whitespace
 		noremap <C-E> :ToggleWhitespace<cr>
 		" Clean Whitesace
 		noremap <C-e> :StripWhitespace<cr>
-	
+
     " git-gutter
 		highlight clear SignColumn
 		let g:gitgutter_realtime = 1
@@ -145,6 +144,10 @@
         set fillchars+=stl:\ ,stlnc:\
         set timeoutlen=5
 
+    " 80 chars is the max
+        highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+        match OverLength /\%81v.\+/
+
 " User Config
 " ===========================================================================
     " Load filetype plugins
@@ -155,8 +158,6 @@
     " settings for the c language
     au FileType c,h           set ai sw=4 ts=4 noexpandtab cindent omnifunc=ccomplete#Complete
 
-    " Needed for some plugins
-    set nocp
 
     " My terminal is fast
     set ttyfast
@@ -266,7 +267,6 @@
     nnoremap  :set invpaste paste?
 
 
-    " Sharing is caring (use system clipboard as primary buffer)
     " This allows us to yank between vim processes
     " Requires vim to be compiled with +xterm_clipboard
     " On archlinux, this can be done without compiling vim from source by
@@ -335,3 +335,7 @@ hi clear
 " No BCE (Background Colour Erase)
 set t_ut=
 colorscheme neverland
+
+" These are things that need to be run AFTER everything else
+autocmd VimEnter * highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+autocmd VimEnter * match OverLength /\%>80v.\+/

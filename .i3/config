@@ -14,8 +14,6 @@ hide_edge_borders none
 # fix graphics glitch
 new_window pixel
 
-# Friendly names for workspaces
-
 
 
 # Hotkeys
