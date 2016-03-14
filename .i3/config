@@ -19,15 +19,16 @@ new_window pixel
 # Hotkeys
 #=====================================================
 set $mod Mod1
+
 bindsym $mod+Return exec --no-startup-id evilvte
 bindsym $mod+x kill
-bindsym $mod+p exec --no-startup-id dmenu_custom
+bindsym $mod+p exec --no-startup-id rofi_custom
 bindsym $mod+l exec --no-startup-id i3lock --color 000000
 
 # Volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 5%-
-bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle 
+bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
 
 # Screen Brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10

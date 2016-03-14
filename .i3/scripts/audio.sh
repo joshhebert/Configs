@@ -1,5 +1,5 @@
-VOLUME=$(amixer | head -n7 | tail -n1 | cut -d' ' -f7 | tr -d "[]" | sed s/%//g)
-MUTE=$(amixer | head -n7 | tail -n1 | cut -d' ' -f8 | tr -d "[]")
+VOLUME=$(amixer | head -n5 | tail -n1 | cut -d' ' -f6 | tr -d "[]" | sed s/%//g)
+MUTE=$(amixer | head -n5 | tail -n1 | cut -d' ' -f8 | tr -d "[]")
 if [ $MUTE == "off" ]; then
     GLYPH=
     echo $GLYPH

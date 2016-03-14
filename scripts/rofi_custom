@@ -1,0 +1,1 @@
+rofi -show run -terminal evilvte -lines 50 -eh 1 -bw 0 -bc "#2f343f" -bg "#2f343f" -hlbg "#2f343f" -hlfg "#ffffff" -fg "#aaaaaa" -font "Hack 24" -location 1

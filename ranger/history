@@ -1,11 +1,3 @@
-shell feh --bg-fill kcfee8k_15004782004_o.jpg
-shell feh --bg-fill stob
-shell feh --bg-fill stob-dearg-glen-coe-buachaille-scotland_15439985480_o.jpg
-shell feh --bg-fill wlpioxl_15439513337_o.jpg
-shell feh --bg-fill julierpass-st-moritz_15626423102_o.jpg
-shell feh --bg-fill victoria-falls-zambia_15601878636_o.jpg
-shell feh --bg-fill fy7ju_15810754666_o.jpg
-shell feh --bg-fill ibvkv5r_18041806396_o.jpg
 shell feh --bg-fill hannig-saas-fee-switzerland_15626428442_o.jpg
 shell feh --bg-fill qcs8rse_15626369782_o.jpg
 shell feh --bg-fill solcd4o_15834411565_o.jpg
@@ -37,14 +29,22 @@ delete`
 rename dnd_natural_attacks.odt
 rename dnd_kyorlin.odt
 mkdir shitty_dota_memes
-open_with 
 shell feh --bg-fill CkvBQnC.jpg
 open_with unzip
 open_wit
-
 l
 l1k
 open_with abiword
 touch 
-delete
 search 
+mplayer -vo xv 160043.mp4
+
+shell mplayer -vo xv 160043.mp4
+shell mplayer -vo gl 160043.mp4
+delete
+open_with 
+rename glitchmob.jpg
+rename rain.jpg
+rename structure.jpg
+rename sketch.png
+rename ridge.jpg

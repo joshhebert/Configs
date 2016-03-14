@@ -13,8 +13,8 @@ no-dock-shadow = true;
 no-dnd-shadow = true;
 
 # Transparency
-inactive-dim = 0.4;
-inactive-opacity = 0.5; 
+inactive-dim = 0.2;
+inactive-opacity = 0.75; 
 active-opacity = 0.8;
 opacity-rule = [
     # Games
@@ -26,7 +26,8 @@ opacity-rule = [
     "99:class_g = 'witcher2'",
     # Media
     "99:class_g = 'MPlayer'",
-    "99:class_g = 'Viewnior'"
+    "99:class_g = 'Viewnior'",
+    "99:class_g = 'chromium'"
 ];
 
 # Fading
