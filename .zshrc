@@ -192,9 +192,9 @@ export PATH="$PATH:$HOME_DIR/.local/lbin:$HOME_DIR/.local/gbin"
     }
 
     # Show Git branch/tag, or name-rev if on detached head
-	git_branch() {
-        ((git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null) | cut -d'/' -f3
-	}
+    git_branch() {
+        ((git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null) | sed 's/refs\/heads\///g'
+    }
 
     # How many line additions?
     git_additions() {
