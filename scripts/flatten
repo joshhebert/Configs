@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Flatten the current directory
+# i.e. pull ALL files up to the top level and delete the resulting
+# empty dir tree
+find ./ -mindepth 2 -type f -exec mv -i '{}' ./ ';'
+find . -type d -depth -empty -exec rmdir "{}" \;
