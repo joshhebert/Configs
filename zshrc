@@ -10,7 +10,7 @@ fi
 # Use the scripts pulled as part of this repo in my path, as
 # well as scripts that are specific to each machine (not
 # included in the repo)
-export PATH="$PATH:$HOME_DIR/.local/lbin:$HOME_DIR/.local/gbin"
+export PATH="$PATH:$HOME/.local/lbin:$HOME/.local/gbin"
 
 # Autoloads
 	autoload -U compinit && compinit

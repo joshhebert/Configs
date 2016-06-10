@@ -1,7 +1,0 @@
-#!/bin/sh
-CURR_KBD=$(setxkbmap -query | grep layout | cut -d' ' -f6)
-if [ $CURR_KBD = "us" ]; then
-    setxkbmap ru
-else
-    setxkbmap us
-fi
