@@ -251,6 +251,7 @@
 
     " enumerate Lines
     set nu
+    set rnu
 
     " after 75 characters write a swap file
     set uc=75
