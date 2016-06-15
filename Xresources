@@ -1,0 +1,22 @@
+rofi.modi: run
+rofi.font: Hack 24
+rofi.width: 30
+rofi.opacity: 70
+rofi.padding:130
+rofi.lines: 20
+rofi.columns: 1
+rofi.location: 1
+rofi.terminal: evilvte
+rofi.fuzzy: true
+rofi.glob: true
+rofi.regex: true
+rofi.threads: 4
+
+rofi.color-enabled: true
+rofi.color-window: #000000, #000000, #000000
+rofi.color-normal: #000000, #ffffff, #000000, #5e5e5e, #ffffff
+rofi.color-active: #000000, #ffffff, #000000, #5e5e5e, #ffffff
+rofi.color-urgent: #ffffff, #dc322f, #ffffff, #dc322f, #ffffff
+
+! Separator style (none, dash, solid)
+rofi.separator-style:            dash

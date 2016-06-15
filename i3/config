@@ -22,7 +22,7 @@ set $mod Mod1
 
 bindsym $mod+Return exec --no-startup-id evilvte
 bindsym $mod+x kill
-bindsym $mod+p exec --no-startup-id rofi_custom
+bindsym $mod+p exec --no-startup-id rofi -show run -eh 2
 bindsym $mod+l exec --no-startup-id i3lock --color 000000
 
 # Volume

@@ -2,10 +2,8 @@
 *,tar,gz
 *.tar.xz
 
-# Or binaries
-*.o
-dwm/src/dwm-6.0/dwm
-dwm/pkg/*
+ranger/history
+ranger/bookmarks
 
-.vim/plugged/*
-.vim/.netrwhist
+vim/plugged/*
+vim/.netrwhist
