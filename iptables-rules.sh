@@ -45,52 +45,18 @@
 	iptables  -A INPUT -p tcp --tcp-flags FIN,ACK FIN 				-j LOGGING-INBOUND
 	iptables  -A INPUT -p tcp --tcp-flags ALL SYN,RST,ACK,FIN,URG 	-j LOGGING-INBOUND
 
-#Reject spoofed packets
-	iptables -A INPUT -s 10.0.0.0/8       -j LOGGING-INBOUND
-	iptables -A INPUT -s 192.0.0.1/24     -j LOGGING-INBOUND
-	iptables -A INPUT -s 169.254.0.0/16   -j LOGGING-INBOUND
-	iptables -A INPUT -s 172.16.0.0/12    -j LOGGING-INBOUND
-	iptables -A INPUT -s 224.0.0.0/4      -j LOGGING-INBOUND
-	iptables -A INPUT -d 224.0.0.0/4      -j LOGGING-INBOUND
-	iptables -A INPUT -s 240.0.0.0/5      -j LOGGING-INBOUND
-	iptables -A INPUT -d 240.0.0.0/5      -j LOGGING-INBOUND
-	iptables -A INPUT -s 0.0.0.0/8        -j LOGGING-INBOUND
-	iptables -A INPUT -d 0.0.0.0/8        -j LOGGING-INBOUND
-	iptables -A INPUT -d 239.255.255.0/24 -j LOGGING-INBOUND
-	iptables -A INPUT -d 255.255.255.255  -j LOGGING-INBOUND
-
 #Specific Protocols
-    #Steam (Bidirectional)
-    iptables -A OUTPUT -p tcp --dport 27014:27050  -m state --state NEW,ESTABLISHED -j ACCEPT 
-    iptables -A INPUT -p tcp --sport 27014:27050  -m state --state ESTABLISHED -j ACCEPT
-    iptables -A OUTPUT -p udp --dport 27000:27030 -j ACCEPT
-    iptables -A INPUT -p udp --sport 27000:27030 -j ACCEPT
-    iptables -A INPUT -p udp --sport 4380 -j ACCEPT
-    iptables -A OUTPUT -p udp --dport 3478 -j ACCEPT
-    iptables -A OUTPUT -p udp --dport 4379 -j ACCEPT
-    iptables -A OUTPUT -p udp --dport 4380 -j ACCEPT
-
-
     #HTTP (Outgoing only)
 	iptables -A OUTPUT -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
 	iptables -A INPUT  -p tcp --sport 80 -m state --state ESTABLISHED     -j ACCEPT
 
-	#HTTP-Alt (Outgoing only)
-	iptables -A OUTPUT -p tcp --dport 8080 -m state --state NEW,ESTABLISHED -j ACCEPT
-	iptables -A INPUT  -p tcp --sport 8080 -m state --state ESTABLISHED     -j ACCEPT
-
+    #HTTPS (Outgoing only)
+	iptables -A OUTPUT -p tcp --dport 443 -m state --state NEW,ESTABLISHED -j ACCEPT
+	iptables -A INPUT  -p tcp --sport 443 -m state --state ESTABLISHED     -j ACCEPT
 
 	#SSH (Outgoing only)
 	iptables -A OUTPUT -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
 	iptables -A INPUT  -p tcp --sport 22 -m state --state ESTABLISHED     -j ACCEPT
-
-	#HTTPS (Outgoing only)
-	iptables -A OUTPUT -p tcp --dport 443 -m state --state NEW,ESTABLISHED -j ACCEPT
-	iptables -A INPUT  -p tcp --sport 443 -m state --state ESTABLISHED     -j ACCEPT
-
-	#IRC (Outgoing only)
-	iptables -A OUTPUT -p tcp --dport 6667 -m state --state NEW,ESTABLISHED -j ACCEPT
-	iptables -A INPUT  -p tcp --sport 6667 -m state --state ESTABLISHED     -j ACCEPT
 
 	#ICMP Ping (Outgoing only)
 	iptables -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT

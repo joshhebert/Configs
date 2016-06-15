@@ -3,7 +3,7 @@ rofi.font: Hack 24
 rofi.width: 30
 rofi.opacity: 70
 rofi.padding:130
-rofi.lines: 20
+rofi.lines: 25
 rofi.columns: 1
 rofi.location: 1
 rofi.terminal: evilvte
