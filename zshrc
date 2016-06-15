@@ -1,9 +1,12 @@
+# We rely on .profile to give us platform specific PATH
+# Also, we'd like it to set a PLATFORM variable if it's not
+# Linux, as there's some stuff like ls that doesn't work properly on Mac
+source ~/.profile
+
 # Set path
 if [[ $USER = "root" ]]; then
-    HOME_DIR="/root"
     IS_ROOT=true
 else
-    HOME_DIR="/home/$USER"
     IS_ROOT=false
 fi
 
@@ -22,7 +25,6 @@ export PATH="$PATH:$HOME/.local/lbin:$HOME/.local/gbin"
 
 # The most imprtant bit
 	export EDITOR=/usr/bin/vim
-
 
 # Plugin loading
 
@@ -48,7 +50,7 @@ export PATH="$PATH:$HOME/.local/lbin:$HOME/.local/gbin"
         antigen bundle command-not-found
 
     antigen apply
-    
+
     # Please for the love of god have scmpuff
     eval "$(scmpuff init -s)"
 
@@ -68,10 +70,16 @@ export PATH="$PATH:$HOME/.local/lbin:$HOME/.local/gbin"
 	alias '...'='cd ../..'
 	alias '....'='cd ../../..'
 	alias 'gping'='ping google.com'
-	alias 'l'='ls --color=auto'
-	alias 'ls'='ls --color=auto'
-	alias 'la'='ls -A --color=auto'
-    alias 'll'='ls -Al --color=auto'
+    if [[ $PLATFORM = "MAC" ]]; then
+        alias 'l'='ls'
+        alias 'la'='ls -A'
+        alias 'll'='ls -Al'
+    else
+        alias 'l'='ls --color=auto'
+        alias 'ls'='ls --color=auto'
+        alias 'la'='ls -A --color=auto'
+        alias 'll'='ls -Al --color=auto'
+    fi
     alias 'sudi'='sudo -i'
     alias 'gps'='git push'
     alias 'gpl'='git pull'
@@ -356,14 +364,10 @@ export PATH="$PATH:$HOME/.local/lbin:$HOME/.local/gbin"
 
 
 # PS1 Setup
-	# Left prompt (WIP)
     if [[ $IS_ROOT = true ]]; then
         PROMPT='%{$fg[white]%}[$HOST] [%{$fg[red]%}${PWD/#$HOME/~}%{$fg[white]%}]$(git_prompt)%{$fg[red]%}  %{$reset_color%}'
     else
         PROMPT='%{$fg[white]%}[$HOST] [${PWD/#$HOME/~}]$(git_prompt)%{$fg[red]%}  %{$reset_color%}'
     fi
-    # Right prompt
-    # All I want to know is if the command I just ran didn't work
-    # In that case, I want the error code
     RPROMPT='%{$fg[red]%} %(?,,%?)'
 
