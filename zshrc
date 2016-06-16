@@ -29,7 +29,7 @@ export PATH="$PATH:$HOME/.local/lbin:$HOME/.local/gbin"
 	autoload -U colors && colors
 
 # The most imprtant bit
-	export EDITOR=/usr/bin/vim
+	export EDITOR=/usr/bin/nvim
 
 # Plugin loading
 
