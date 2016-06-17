@@ -3,6 +3,11 @@
 # Linux, as there's some stuff like ls that doesn't work properly on Mac
 source ~/.profile
 
+# Set up golang stuff
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+
 # Set path
 if [[ $USER = "root" ]]; then
     IS_ROOT=true
@@ -24,7 +29,7 @@ export PATH="$PATH:$HOME/.local/lbin:$HOME/.local/gbin"
 	autoload -U colors && colors
 
 # The most imprtant bit
-	export EDITOR=/usr/bin/vim
+	export EDITOR=nvim
 
 # Plugin loading
 
@@ -80,10 +85,14 @@ export PATH="$PATH:$HOME/.local/lbin:$HOME/.local/gbin"
         alias 'la'='ls -A --color=auto'
         alias 'll'='ls -Al --color=auto'
     fi
+    alias 'vi'='nvim'
+    alias 'vim'='nvim'
     alias 'sudi'='sudo -i'
     alias 'gps'='git push'
     alias 'gpl'='git pull'
     alias 'gc'='git commit'
+    alias 'gu'='git reset HEAD --' # Unstage a file
+    alias 'gr'='git reset --hard'
     alias 'gpuoff'='sudo rmmod nvidia_modeset; sudo rmmod nvidia; sudo tee /proc/acpi/bbswitch <<< OFF'
     alias 'share'='python2 -m SimpleHTTPServer'
 #Options
@@ -367,7 +376,7 @@ export PATH="$PATH:$HOME/.local/lbin:$HOME/.local/gbin"
     if [[ $IS_ROOT = true ]]; then
         PROMPT='%{$fg[white]%}[$HOST] [%{$fg[red]%}${PWD/#$HOME/~}%{$fg[white]%}]$(git_prompt)%{$fg[red]%}  %{$reset_color%}'
     else
-        PROMPT='%{$fg[white]%}[$HOST] [${PWD/#$HOME/~}]$(git_prompt)%{$fg[red]%}  %{$reset_color%}'
+        PROMPT='%{$fg[white]%}[$HOST] [${PWD/#$HOME/~}]$(git_prompt)%{$fg[red]%} > %{$reset_color%}'
     fi
     RPROMPT='%{$fg[red]%} %(?,,%?)'
 
