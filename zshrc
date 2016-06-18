@@ -376,7 +376,7 @@ export PATH="$PATH:$HOME/.local/lbin:$HOME/.local/gbin"
     if [[ $IS_ROOT = true ]]; then
         PROMPT='%{$fg[white]%}[$HOST] [%{$fg[red]%}${PWD/#$HOME/~}%{$fg[white]%}]$(git_prompt)%{$fg[red]%}  %{$reset_color%}'
     else
-        PROMPT='%{$fg[white]%}[$HOST] [${PWD/#$HOME/~}]$(git_prompt)%{$fg[red]%} > %{$reset_color%}'
+        PROMPT='%{$fg[white]%}[$HOST] [${PWD/#$HOME/~}]$(git_prompt)%{$fg[red]%}  %{$reset_color%}'
     fi
     RPROMPT='%{$fg[red]%} %(?,,%?)'
 

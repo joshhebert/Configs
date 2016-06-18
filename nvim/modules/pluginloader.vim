@@ -3,8 +3,8 @@
 "==============================================================================
 set runtimepath^=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 
-call dein#begin( "~/.config/nvim/plugged" )
-call dein#add( "~/.config/nvim/dein/repos/github.com/Shougo/dein.vim/" )
+call dein#begin( expand( '~/.config/nvim/dein' ) )
+call dein#add( 'Shougo/dein.vim' )
 
 call dein#add( 'ntpeters/vim-better-whitespace' )
 call dein#add( 'tpope/vim-surround' )
