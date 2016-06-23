@@ -2,6 +2,18 @@
 # Run the given command until it reports a non-zero exit code
 # Pretty handy for stress testing multithreaded programs
 "$@"
+counter=0
+
+# Trap ctrl-c to output number of times ran
+trap abrt INT
+function abrt() {
+    echo "** Ran $counter times without error"
+    exit
+}
+
 while [ $? -eq 0 ]; do
+    counter=$((counter+1))
     $@
 done
+
+abrt

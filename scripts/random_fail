@@ -1,0 +1,11 @@
+#!/bin/bash
+# Randomly fail with a liklihood equal to 1/n, where n
+# is the argument passed in
+
+re='^[0-9]+$'
+if ! [[ $1 =~ $re ]] ; then
+   echo "error: Argument must be a number" >&2; exit 1
+fi
+
+
+[ $[ $RANDOM % $1 ] == 0 ] && exit 1 || exit 0
