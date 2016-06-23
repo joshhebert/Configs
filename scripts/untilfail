@@ -1,0 +1,7 @@
+#!/bin/bash
+# Run the given command until it reports a non-zero exit code
+# Pretty handy for stress testing multithreaded programs
+"$@"
+while [ $? -eq 0 ]; do
+    $@
+done
