@@ -5,7 +5,7 @@ rofi.opacity: 70
 rofi.padding:130
 rofi.lines: 25
 rofi.columns: 1
-rofi.location: 1
+rofi.location: 3
 rofi.terminal: evilvte
 rofi.fuzzy: true
 rofi.glob: true
