@@ -200,7 +200,7 @@ export PATH="$PATH:$HOME/.local/lbin:$HOME/.local/gbin"
 
     # Get how many commits ahead we are
     git_commits_ahead(){
-        git status | head -n 2 | tail -n 1 | grep 'ahead' | sed 's/[^0-9]*//g'
+        git status | head -n 2 | tail -n 1 | grep 'ahead' | sed -E 's/^.*([0-9+]) commit.*$/\1/g'
     }
 
     # Get how many commits behind we are
