@@ -4,7 +4,7 @@
 source ~/.profile
 
 # Set up golang stuff
-export GOPATH=$HOME/go
+export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 
 
@@ -215,12 +215,12 @@ export PATH="$PATH:$HOME/.local/lbin:$HOME/.local/gbin"
 
     # How many line additions?
     git_additions() {
-        git diff --stat | tail -n 1 | cut -d',' -f2 | sed 's/[^0-9]*//g'
+        command git diff --stat | tail -n 1 | cut -d',' -f2 | sed 's/[^0-9]*//g'
     }
 
     # How many deletions?
     git_deletions() {
-        git diff --stat | tail -n 1 | cut -d',' -f3 | sed 's/[^0-9]*//g'
+        command git diff --stat | tail -n 1 | cut -d',' -f3 | sed 's/[^0-9]*//g'
     }
 
     # Git state
