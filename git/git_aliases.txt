@@ -1,0 +1,4 @@
+# Git Undo
+git config --global alias.undo '!f() { \
+    git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; \
+}; f'
