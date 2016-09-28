@@ -20,7 +20,7 @@ new_window pixel
 #=====================================================
 set $mod Mod1
 
-bindsym $mod+Return exec --no-startup-id sakura
+bindsym $mod+Shift+Return exec --no-startup-id evilvte
 bindsym $mod+x kill
 bindsym $mod+p exec --no-startup-id rofi -show run -eh 2
 bindsym $mod+l exec --no-startup-id i3lock --color 000000
@@ -31,8 +31,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume alsa_out
 bindsym XF86AudioMute exec --no-startup-id toggle_mute 0
 
 # Screen Brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
+#bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
+#bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
+bindsym F6 exec --no-startup-id light -A 10
+bindsym F5 exec --no-startup-id light -U 10
 
 bindsym F9 exec --no-startup-id xdotool click 1
 
@@ -130,8 +132,8 @@ set $darkgrey    #4b4b4b
 set $darkwhite   #f1edfb
 font pango:Hack 15px, Icons 10
 #                       BORDER      BACKGROUND  TEXT   INDICATOR
-client.focused          $black      $darkgrey   $white $darkwhite
-client.unfocused        $black      $darkwhite  $white $darkwhite
+client.focused          $black      $darkwhite   $white $darkwhite
+client.unfocused        $black      $darkgrey  $white $darkwhite
 client.focused_inactive $black      $trueblack  $white $darkwhite
 client.urgent           $black      $red        $white $red
 
@@ -148,7 +150,7 @@ bar {
                 separator          $darkgrey
 
 #                                  BORDER       BACKGROUND   TEXT
-                focused_workspace  $darkgrey    $trueblack    $white
+                focused_workspace  $darkwhite    $trueblack    $white
                 inactive_workspace $trueblack   $trueblack    $white
                 active_workspace   $darkgrey    $darkwhite    $white
                 urgent_workspace   $red         $red          $white
