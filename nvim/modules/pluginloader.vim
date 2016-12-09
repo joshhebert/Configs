@@ -25,10 +25,12 @@ call dein#add( 'vim-ruby/vim-ruby' )
 call dein#add( 'fatih/vim-go' )
 call dein#add( 'zchee/deoplete-go', { 'build': 'make' } )
 
+call dein#add( 'tpope/vim-commentary' )
 
 call dein#end( )
 
 "==============================================================================
+" nvpaste paste? hlsearch
 " Plugin Configuration
 "==============================================================================
 	" vim-better-whitespace

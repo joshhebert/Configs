@@ -104,6 +104,9 @@
     " installing gvim
     set clipboard=unnamed
 
+    " Disable fucking mouse support
+    set mouse=
+
 " =============================================================================
 " Syntax Stuff
 " =============================================================================
@@ -116,6 +119,9 @@
 " =============================================================================
     nnoremap ; :
     nnoremap : ;
+
+
+    vmap / gc
 
     " New tab with ctrl-t
     map <C-t> ;tabnew<CR>
