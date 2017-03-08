@@ -196,6 +196,8 @@ export PATH="$PATH:$HOME/.local/lbin:$HOME/.local/gbin"
 	bindkey '\eOB' down-line-or-beginning-search
 	bindkey '\e[B' down-line-or-beginning-search
 
+
+
 # Git-specific stuff
 
     # Get how many commits ahead we are
@@ -265,7 +267,7 @@ export PATH="$PATH:$HOME/.local/lbin:$HOME/.local/gbin"
 
 
             # Branch + ahead/behind
-            echo -n "%{$fg[white]%}("
+            echo -n "%{$fg[white]%}["
             local GIT_DIR="$(git rev-parse --git-dir 2> /dev/null)"
             if [ -n $GIT_DIR ] && test -r $GIT_DIR/MERGE_HEAD; then
                 echo -n "%{$fg[magenta]%}<merging> "
@@ -284,10 +286,10 @@ export PATH="$PATH:$HOME/.local/lbin:$HOME/.local/gbin"
                     echo -n "%{$fg[red]%} -"
                     echo -n "$gcb"
             fi
-            echo -n "%{$fg[white]%})"
+            echo -n "%{$fg[white]%}"
 
             # Additions/Deletions
-            echo -n "%{$fg[white]%}(%{$fg_bold[green]%}+"
+            echo -n "%{$fg[white]%}/%{$fg_bold[green]%}+"
             local ga=$(git_additions)
             if [[ ! -z "$ga" ]]
                 then
@@ -303,7 +305,7 @@ export PATH="$PATH:$HOME/.local/lbin:$HOME/.local/gbin"
                 else
                     echo -n "0"
             fi
-            echo -n "%{$fg[white]%})"
+            echo -n "%{$fg[white]%}]"
 
         else
             # this is not a git repository

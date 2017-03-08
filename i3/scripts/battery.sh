@@ -10,7 +10,7 @@ else
         if [ $PERCENT -gt 60 ]; then
             GLYPH=
         else
-            if [ $PERCENT -gt 30 ]; then
+            if [ $PERCENT -gt 25 ]; then
                 GLYPH=
             else
                 GLYPH=

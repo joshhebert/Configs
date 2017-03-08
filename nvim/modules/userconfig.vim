@@ -14,6 +14,9 @@
     " For regular expressions turn magic on
     set magic
 
+    " Show the command as I'm typing it
+    set showcmd
+
     " give cursor position
     set ruler
 

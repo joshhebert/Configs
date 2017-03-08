@@ -1,5 +1,6 @@
-export LC_ALL=C
-export LIBGL_DEBUG=verbose
-export LD_PRELOAD='/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /usr/$LIB/libxcb.so.1 /usr/$LIB/libgcrypt.so'
+#export LC_ALL=C
+#export LIBGL_DEBUG=verbose
+#export LD_PRELOAD='/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /usr/$LIB/libxcb.so.1 /usr/$LIB/libgcrypt.so'
 
-steam
+#export STEAM_RUNTIME=0
+steam-native

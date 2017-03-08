@@ -1,10 +1,5 @@
 # General Config
 #=====================================================
-set $default_gaps_inner 15
-set $default_gaps_outer 5
-gaps inner $default_gaps_inner
-gaps outer $default_gaps_outer
-
 workspace_auto_back_and_forth yes
 force_display_urgency_hint 0 ms
 focus_on_window_activation urgent
@@ -23,7 +18,7 @@ set $mod Mod1
 bindsym $mod+Shift+Return exec --no-startup-id evilvte
 bindsym $mod+x kill
 bindsym $mod+p exec --no-startup-id rofi -show run -eh 2
-bindsym $mod+l exec --no-startup-id i3lock --color 000000
+bindsym $mod+l exec --no-startup-id i3lock --color=000000
 
 # Volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo +5%
@@ -64,7 +59,7 @@ bindsym $mod+Shift+Down     exec --no-startup-id i3man -d prev --pull
 bindsym $mod+Shift+Left     exec --no-startup-id i3man -d prev --relative --pull
 bindsym $mod+Shift+Right    exec --no-startup-id i3man -d next --relative --pull
 
-# Super key used for window manipulation in the
+# Alt key used for window manipulation in the
 # workspace
 bindsym Mod4+Left           focus left
 bindsym Mod4+Right          focus right
@@ -139,21 +134,25 @@ client.urgent           $black      $red        $white $red
 
 bar {
 
-        status_command i3blocks -c .i3/i3blocks.conf
-        position bottom
-        separator_symbol "/"
-        font pango:Hack 10, Icons 10
-        strip_workspace_numbers yes
-        colors {
-                statusline         $white
-                background         $trueblack
-                separator          $darkgrey
+    mode hide
+    hidden_state hide
+    modifier $mod
 
-#                                  BORDER       BACKGROUND   TEXT
-                focused_workspace  $darkwhite    $trueblack    $white
-                inactive_workspace $trueblack   $trueblack    $white
-                active_workspace   $darkgrey    $darkwhite    $white
-                urgent_workspace   $red         $red          $white
-        }
+    status_command i3blocks -c .i3/i3blocks.conf
+    position bottom
+    separator_symbol "/"
+    font pango:Hack 10, Icons 10
+    strip_workspace_numbers yes
+    colors {
+            statusline         $white
+            background         $trueblack
+            separator          $darkgrey
+
+#                              BORDER       BACKGROUND   TEXT
+            focused_workspace  $darkwhite    $trueblack    $white
+            inactive_workspace $trueblack   $trueblack    $white
+            active_workspace   $darkgrey    $darkwhite    $white
+            urgent_workspace   $red         $red          $white
+    }
 }
 

@@ -24,8 +24,13 @@ call dein#add( 'leafgarland/typescript-vim' )
 call dein#add( 'vim-ruby/vim-ruby' )
 call dein#add( 'fatih/vim-go' )
 call dein#add( 'zchee/deoplete-go', { 'build': 'make' } )
+call dein#add( 'rust-lang/rust.vim' )
 
 call dein#add( 'tpope/vim-commentary' )
+
+call dein#add( 'terryma/vim-expand-region' )
+
+call dein#add( 'dodie/vim-disapprove-deep-indentation' )
 
 call dein#end( )
 
