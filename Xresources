@@ -1,5 +1,5 @@
 rofi.modi: run
-rofi.font: Hack 24
+rofi.font: Hack 14
 rofi.width: 30
 rofi.opacity: 70
 rofi.padding:130

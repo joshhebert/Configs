@@ -3,12 +3,15 @@
 workspace_auto_back_and_forth yes
 force_display_urgency_hint 0 ms
 focus_on_window_activation urgent
+focus_follows_mouse no
 
 hide_edge_borders none
 
 # fix graphics glitch
 new_window pixel
 
+# Force all new windows to be floating
+for_window [class="[.]*"] floating enable
 
 
 # Hotkeys
@@ -17,7 +20,7 @@ set $mod Mod1
 
 bindsym $mod+Shift+Return exec --no-startup-id evilvte
 bindsym $mod+x kill
-bindsym $mod+p exec --no-startup-id rofi -show run -eh 2
+bindsym $mod+Return exec --no-startup-id rofi -show run -eh 2
 bindsym $mod+l exec --no-startup-id i3lock --color=000000
 
 # Volume

@@ -25,6 +25,7 @@ call dein#add( 'vim-ruby/vim-ruby' )
 call dein#add( 'fatih/vim-go' )
 call dein#add( 'zchee/deoplete-go', { 'build': 'make' } )
 call dein#add( 'rust-lang/rust.vim' )
+call dein#add( 'racer-rust/vim-racer' )
 
 call dein#add( 'tpope/vim-commentary' )
 
@@ -101,3 +102,6 @@ call dein#end( )
         let g:go_highlight_types = 1
         let g:go_highlight_operators = 1
         let g:go_highlight_build_constraints = 1
+
+    " Racer
+    let g:racer_cmd = "/usr/bin/racer"
